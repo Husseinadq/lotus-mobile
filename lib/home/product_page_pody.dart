@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/widgets/big_text.dart';
@@ -34,15 +35,35 @@ class _ProductPagePodyState extends State<ProductPagePody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.green,
-      height: 300,
-      child: PageView.builder(
-          controller: pageController,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return _bodyPageItem(index);
-          }),
+    return Column(
+      children: [
+
+        //this for page slider
+        Container(
+        
+          height: 300,
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return _bodyPageItem(index);
+              }),
+        ),
+
+        //this for dots under the slider
+        DotsIndicator(
+          dotsCount: 5,
+          position: _currPageValue,
+          decorator: DotsDecorator(
+            color: AppColors.thirdAccent,
+            activeColor: AppColors.third,
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        )
+      ],
     );
   }
 
