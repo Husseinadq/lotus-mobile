@@ -2,6 +2,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:lotus/home/product_page_pody.dart';
 import 'package:lotus/utils/colors.dart';
+import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';
 import 'package:lotus/widgets/small_text.dart';
 
@@ -19,8 +20,9 @@ class _MainShopPageState extends State<MainShopPage> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 45),
-            padding: EdgeInsets.only(left: 15, right: 10),
+            margin: EdgeInsets.only(top: Dimensions.height45),
+            padding: EdgeInsets.only(
+                left: Dimensions.width15, right: Dimensions.width10),
             child: Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +33,7 @@ class _MainShopPageState extends State<MainShopPage> {
                         BigText(
                           text: 'Yemen',
                           color: AppColors.thirdAccent,
-                          size: 30,
+                          size: Dimensions.font30,
                         ),
                         Row(children: [
                           SmallText(
@@ -45,8 +47,8 @@ class _MainShopPageState extends State<MainShopPage> {
                   ),
                   Center(
                     child: Container(
-                      width: 45,
-                      height: 45,
+                      width: Dimensions.width45,
+                      height: Dimensions.height45,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: AppColors.third),
@@ -60,7 +62,7 @@ class _MainShopPageState extends State<MainShopPage> {
               ),
             ),
           ),
-          ProductPagePody(),
+          Expanded(child: SingleChildScrollView(child: ProductPagePody())),
         ],
       ),
     );

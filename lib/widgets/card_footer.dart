@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/widgets/small_text.dart';
 
+import '../utils/dimensions.dart';
+
 class CardFooter extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -16,9 +18,10 @@ class CardFooter extends StatelessWidget {
         Icon(
           icon,
           color: AppColors.thirdAccent,
+          size: Dimensions.size20,
         ),
         SizedBox(
-          width: 5,
+          width: Dimensions.width2,
         ),
         SmallText(
           text: text,
