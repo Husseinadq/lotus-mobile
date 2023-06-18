@@ -57,6 +57,7 @@ class Dimensions {
   static double height75 = screenHeight / (screenHeight / 75);
   static double height100 = screenHeight / (screenHeight / 100);
   static double height120 = screenHeight / (screenHeight / 120);
+  static double height350 = screenHeight / (screenHeight / 350);
 //############  Start Height Size  ############//
 
 //############  Start font Size  ############//
@@ -84,5 +85,27 @@ class Dimensions {
   static double radius45 = screenHeight / (screenHeight / 45);
   static double radius50 = screenHeight / (screenHeight / 50);
 //############  Start Radius Size  ############//
+
+//############  Start Icons Size  ############//
+  static double iconSize5 = screenHeight / (screenHeight / 5);
+  static double iconSize7 = screenHeight / (screenHeight / 7);
+  static double iconSize10 = screenHeight / (screenHeight / 10);
+  static double iconSize12 = screenHeight / (screenHeight / 12);
+  static double iconSize15 = screenHeight / (screenHeight / 15);
+  static double iconSize16 = screenHeight / (screenHeight / 16);
+  static double iconSize17 = screenHeight / (screenHeight / 17);
+  static double iconSize18 = screenHeight / (screenHeight / 18);
+  static double iconSize19 = screenHeight / (screenHeight / 19);
+  static double iconSize20 = screenHeight / (screenHeight / 20);
+  static double iconSize22 = screenHeight / (screenHeight / 22);
+  static double iconSize24 = screenHeight / (screenHeight / 24);
+  static double iconSize26 = screenHeight / (screenHeight / 26);
+  static double iconSize30 = screenHeight / (screenHeight / 30);
+  static double iconSize35 = screenHeight / (screenHeight / 35);
+  static double iconSize40 = screenHeight / (screenHeight / 40);
+  static double iconSize45 = screenHeight / (screenHeight / 45);
+  static double iconSize50 = screenHeight / (screenHeight / 50);
+
+//############  Start Icons Size  ############//
 
 }

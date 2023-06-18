@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lotus/widgets/home_pages_slider.dart';
 
-import '../widgets/popular_product.dart';
+import '../../widgets/popular_product.dart';
 
 class ProductPagePody extends StatefulWidget {
   const ProductPagePody({super.key});

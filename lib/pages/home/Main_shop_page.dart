@@ -1,6 +1,6 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
-import 'package:lotus/home/product_page_pody.dart';
+import 'package:lotus/pages/home/product_page_pody.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';

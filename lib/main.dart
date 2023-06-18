@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lotus/home/Main_shop_page.dart';
+import 'package:lotus/pages/home/Main_shop_page.dart';
 import 'package:get/get.dart';
+import 'package:lotus/pages/product/product_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MainShopPage());
+        home: ProductDetail());
   }
 }

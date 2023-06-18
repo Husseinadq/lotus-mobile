@@ -8,6 +8,7 @@ import '../utils/colors.dart';
 import '../utils/dimensions.dart';
 import 'big_text.dart';
 import 'card_footer.dart';
+import 'card_main_data.dart';
 
 class HomePagesSlider extends StatefulWidget {
   const HomePagesSlider({super.key});
@@ -132,57 +133,11 @@ class _HomePagesSliderState extends State<HomePagesSlider> {
                         offset: Offset(0, 5))
                   ]),
               child: Container(
-                padding: EdgeInsets.only(
-                    left: Dimensions.height15,
-                    right: Dimensions.height15,
-                    top: Dimensions.height15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(text: "Chinese Side"),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Wrap(
-                          children: List.generate(
-                              5,
-                              (index) => Icon(
-                                    Icons.star,
-                                    color: AppColors.third,
-                                    size: Dimensions.size15,
-                                  )),
-                        ),
-                        SizedBox(
-                          width: Dimensions.width10,
-                        ),
-                        SmallText(text: '4.5'),
-                        SizedBox(
-                          width: Dimensions.width10,
-                        ),
-                        SmallText(text: '1580'),
-                        SizedBox(
-                          width: Dimensions.width10,
-                        ),
-                        SmallText(text: 'comments'),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CardFooter(icon: Icons.circle_sharp, text: 'Normal'),
-                        CardFooter(icon: Icons.add_location, text: '1.7km'),
-                        CardFooter(icon: Icons.timer_outlined, text: '32min'),
-                      ],
-                    )
-                  ],
-                ),
-              ),
+                  padding: EdgeInsets.only(
+                      left: Dimensions.height15,
+                      right: Dimensions.height15,
+                      top: Dimensions.height15),
+                  child: CardMainDate(title: 'Chinese Side')),
             ),
           )
         ],
