@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:lotus/controller/popular_product_controller.dart';
 import 'package:lotus/widgets/small_text.dart';
 
 import '../utils/colors.dart';
@@ -11,6 +12,7 @@ import 'card_footer.dart';
 import 'card_main_data.dart';
 
 class HomePagesSlider extends StatefulWidget {
+  
   const HomePagesSlider({super.key});
 
   @override
@@ -144,4 +146,5 @@ class _HomePagesSliderState extends State<HomePagesSlider> {
       ),
     );
   }
+
 }
