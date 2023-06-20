@@ -1,4 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lotus/controller/popular_product_controller.dart';
+
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/card_main_data.dart';
@@ -10,10 +14,17 @@ import '../../widgets/card_footer.dart';
 import '../../widgets/small_text.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+  final int productId;
+  ProductDetail({
+    Key? key,
+    required this.productId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().findById(productId);
+    print(product.id);
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: Stack(children: [
@@ -72,7 +83,7 @@ class ProductDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CardMainDate(title: "Product Detai"),
+                  CardMainDate(title: product.name!),
                   SizedBox(
                     height: Dimensions.height20,
                   ),

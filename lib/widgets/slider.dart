@@ -1,24 +1,23 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lotus/controller/popular_product_controller.dart';
-import 'package:lotus/models/product_model.dart';
-import 'package:lotus/utils/app_constants.dart';
-import 'package:lotus/widgets/home_pages_slider.dart';
 
-import '../../utils/colors.dart';
-import '../../utils/dimensions.dart';
-import '../../widgets/card_main_data.dart';
-import '../../widgets/popular_product.dart';
+import '../controller/popular_product_controller.dart';
+import '../models/product_model.dart';
+import '../routes/routes_helper.dart';
+import '../utils/app_constants.dart';
+import '../utils/colors.dart';
+import '../utils/dimensions.dart';
+import 'card_main_data.dart';
 
-class ProductPagePody extends StatefulWidget {
-  const ProductPagePody({super.key});
+class SliderWidget extends StatefulWidget {
+  const SliderWidget({super.key});
 
   @override
-  State<ProductPagePody> createState() => _ProductPagePodyState();
+  State<SliderWidget> createState() => _SliderWidgetState();
 }
 
-class _ProductPagePodyState extends State<ProductPagePody> {
+class _SliderWidgetState extends State<SliderWidget> {
   PageController pageController = PageController(viewportFraction: 0.9);
   var _currPageValue = 0.0;
   var _scaleFactor = 0.8;
@@ -40,30 +39,36 @@ class _ProductPagePodyState extends State<ProductPagePody> {
     super.dispose();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //########## Strat home pages slider  ##########//
+         //########## Strat home pages slider  ##########//
         GetBuilder<PopularProductController>(builder: ((popularProducts) {
           return Container(
-            child: Column(
-              children: [
-                //########## Strat pages slider  ##########//
-                Container(
-                  height: Dimensions.pageView,
-                  child: PageView.builder(
-                      controller: pageController,
-                      itemCount: popularProducts.popularProductList.length,
-                      itemBuilder: (context, index) {
-                        return _bodyPageItem(
-                            index, popularProducts.popularProductList[index]);
-                      }),
-                ),
-                //########## End pages slider ##########//
-              ],
-            ),
-          );
+              child: Column(
+            children: [
+              //########## Strat pages slider  ##########//
+              Container(
+                height: Dimensions.pageView,
+                child: popularProducts.isLoaded
+                    ? PageView.builder(
+                        controller: pageController,
+                        itemCount: popularProducts.popularProductList.length,
+                        itemBuilder: (context, index) {
+                          return _bodyPageItem(
+                              index, popularProducts.popularProductList[index]);
+                        })
+                    : Center(
+                        child:
+                            CircularProgressIndicator(color: AppColors.third),
+                      ),
+              ),
+              //########## End pages slider ##########//
+            ],
+          ));
         })),
         //########## Strat dots under the slider ##########//
         GetBuilder<PopularProductController>(
@@ -91,7 +96,6 @@ class _ProductPagePodyState extends State<ProductPagePody> {
 
           //########## End  Product Popular Section ##########//
         ),
-        PopularProduct(),
       ],
     );
   }
@@ -126,17 +130,23 @@ class _ProductPagePodyState extends State<ProductPagePody> {
       transform: matrix,
       child: Stack(
         children: [
-          Container(
-            height: Dimensions.pageViewContainer,
-            margin: EdgeInsets.only(
-                left: Dimensions.width5, right: Dimensions.width5),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: AppColors.third,
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                        AppConstants.BASE_URL + "/uploads/" + product.img!))),
+          GestureDetector(
+            onTap: (() {
+              print(product.id);
+              Get.toNamed(RouteHelper.getProductDetail(product.id!));
+            }),
+            child: Container(
+              height: Dimensions.pageViewContainer,
+              margin: EdgeInsets.only(
+                  left: Dimensions.width5, right: Dimensions.width5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius30),
+                  color: AppColors.third,
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          AppConstants.BASE_URL + "/uploads/" + product.img!))),
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,

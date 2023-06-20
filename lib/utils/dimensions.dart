@@ -27,6 +27,7 @@ class Dimensions {
 
 //############  Start Width Size  ############//
   static double width2 = screenWidth / (screenWidth / 2);
+  static double width3 = screenWidth / (screenWidth / 3);
   static double width5 = screenWidth / (screenWidth / 5);
   static double width10 = screenWidth / (screenWidth / 10);
   static double width15 = screenWidth / (screenWidth / 15);
@@ -57,6 +58,7 @@ class Dimensions {
   static double height75 = screenHeight / (screenHeight / 75);
   static double height100 = screenHeight / (screenHeight / 100);
   static double height120 = screenHeight / (screenHeight / 120);
+  static double height250 = screenHeight / (screenHeight / 250);
   static double height350 = screenHeight / (screenHeight / 350);
 //############  Start Height Size  ############//
 

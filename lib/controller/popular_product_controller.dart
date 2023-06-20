@@ -11,20 +11,35 @@ class PopularProductController extends GetxController {
   });
 
   List<ProductModel> _popularProductList = [];
+  bool _isLoaded = false;
 
+// ##### start get ####
+  bool get isLoaded => _isLoaded;
   List<ProductModel> get popularProductList =>
       _popularProductList; //return the list of product to the UI
+  ProductModel findById(int id) {
+   late ProductModel product ;
+    popularProductList.forEach(
+      (element) {
+        if(element.id == id) {
+          product=element ;
+          
+        }
+      },
+    );
+   
+    return product;
+  }
+
+// ##### end get ####
 
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepo.getPopularProductRepoList();
-         print("get data 111 "+response.statusCode.toString());
     if (response.statusCode == 200) {
-      
       _popularProductList = [];
       _popularProductList.addAll(Products.fromJson(response.body)
           .products); //we bass the data after we format it and call get products method
-      
-      print(_popularProductList);
+      _isLoaded = true;
       update();
 
       ///like setStait
