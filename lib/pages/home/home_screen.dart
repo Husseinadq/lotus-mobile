@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lotus/widgets/product/product_cart_card.dart';
 import 'package:lotus/widgets/slider.dart';
 
 import '../../widgets/app_bar/app_bar.dart';
@@ -19,13 +20,10 @@ class HomeScreen extends StatelessWidget {
             SliderWidget(),
             // GetBuilder<RecommendedProductController>(builder: ((controller) => PopularProduct(recommendedProduct: controller,))),
             SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
+              scrollDirection: Axis.vertical,
+              child: Column(
                 children: const [
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
+              
                 ],
               ),
             )

@@ -6,7 +6,7 @@ class Products {
   int? _typeId;
   int? _offset;
 
-  List<ProductModel>get products=>_products;
+  List<ProductModel> get products => _products;
   late List<ProductModel> _products;
   Products({
     required totalSize,
@@ -20,9 +20,7 @@ class Products {
     this._products = products;
   }
 
-
 //
-
 
   Products.fromJson(Map<String, dynamic> json) {
     _totalSize = json['total_size'];
@@ -30,8 +28,8 @@ class Products {
     _offset = json['offset'];
     if (json['products'] != null) {
       _products = <ProductModel>[];
-     json['products'].forEach((v) {
-        _products.add( ProductModel.fromJson(v));
+      json['products'].forEach((v) {
+        _products.add(ProductModel.fromJson(v));
       });
     }
   }
@@ -41,14 +39,14 @@ class ProductModel {
   int? id;
   String? name;
   String? description;
-  int? price;
+  double? price;
   int? stars;
 
   String? img;
   String? location;
-  String? createdAt;
-  String? updatedAt;
-  int? typeId;
+  // String? createdAt;
+  // String? updatedAt;
+  int? brand;
   ProductModel({
     this.id,
     this.name,
@@ -57,9 +55,9 @@ class ProductModel {
     this.stars,
     this.img,
     this.location,
-    this.createdAt,
-    this.updatedAt,
-    this.typeId,
+    // this.createdAt,
+    // this.updatedAt,
+    this.brand,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -67,13 +65,14 @@ class ProductModel {
       id: json["id"],
       name: json["name"],
       description: json["description"],
-      price: json["price"],
-      stars:json["stars"],
+      price: double.parse( json["price"].toString()),
+      stars: json["stars"],
       img: json["img"],
       location: json["location"],
-      createdAt: json["createdAt"],
-      updatedAt: json["updatedAt"],
-      typeId: json["typeId"],
+      // createdAt: json["createdAt"],
+      // updatedAt: json["updatedAt"],
+      // brand: json["typeId"],
+      brand: json["brand"],
     );
   }
 //

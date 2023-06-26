@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lotus/controller/cart_controller.dart';
 import 'package:lotus/controller/popular_product_controller.dart';
+import 'package:lotus/routes/routes_helper.dart';
 
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
@@ -10,8 +12,6 @@ import 'package:lotus/widgets/exbandable_text.dart';
 import 'package:lotus/widgets/floting_icon.dart';
 
 import '../../widgets/big_text.dart';
-import '../../widgets/card_footer.dart';
-import '../../widgets/small_text.dart';
 
 class ProductDetail extends StatelessWidget {
   final int productId;
@@ -22,9 +22,9 @@ class ProductDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var product =
-        Get.find<PopularProductController>().findById(productId);
-    print(product.id);
+    var product = Get.find<PopularProductController>().findById(productId);
+    Get.find<PopularProductController>()
+        .initProduct(Get.find<CartController>(), product);
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: Stack(children: [
@@ -49,18 +49,59 @@ class ProductDetail extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FlotingIcon(
-                icon: Icons.arrow_back,
-                iconColor: AppColors.third,
-                size: Dimensions.iconSize35,
-                backgroundColor: AppColors.primary,
+              GestureDetector(
+                onTap: (() {
+                  Get.toNamed(RouteHelper.getInitial());
+                }),
+                child: FlotingIcon(
+                  icon: Icons.arrow_back,
+                  iconColor: AppColors.third,
+                  size: Dimensions.iconSize35,
+                  backgroundColor: AppColors.primary,
+                ),
               ),
-              FlotingIcon(
-                icon: Icons.shopping_cart,
-                iconColor: AppColors.third,
-                size: Dimensions.iconSize35,
-                backgroundColor: AppColors.primary,
-              ),
+              GetBuilder<PopularProductController>(builder: ((controller) {
+                return Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: (() {
+                        Get.toNamed(RouteHelper.cart);
+                      }),
+                      child: FlotingIcon(
+                        icon: Icons.shopping_cart,
+                        iconColor: AppColors.third,
+                        size: Dimensions.iconSize35,
+                        backgroundColor: AppColors.primary,
+                      ),
+                    ),
+                    Get.find<PopularProductController>().totalItems >= 1
+                        ? Positioned(
+                            right: 0,
+                            top: 0,
+                            child: Center(
+                              child: Stack(children: [
+                                Icon(
+                                  Icons.circle,
+                                  color: Colors.red,
+                                  size: 15,
+                                ),
+                                Positioned(
+                                    right: 4,
+                                    top: 1,
+                                    child: BigText(
+                                      text: Get.find<PopularProductController>()
+                                          .totalItems
+                                          .toString(),
+                                      size: 10,
+                                      color: AppColors.primary,
+                                    ))
+                              ]),
+                            ),
+                          )
+                        : Positioned(right: 0, top: 0, child: Text("")),
+                  ],
+                );
+              }))
             ],
           ),
         ),
@@ -93,9 +134,7 @@ class ProductDetail extends StatelessWidget {
                   ),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: ExpandableText(
-                          text:
-                              'hi sldkjf df dsfsdf sdfsdfsdf  hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf hi sldkjf df dsfsdf sdfsdfsdf '),
+                      child: ExpandableText(text: product.description!),
                     ),
                   )
                 ],
@@ -114,56 +153,78 @@ class ProductDetail extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(Dimensions.radius20 * 2),
                 topRight: Radius.circular(Dimensions.radius20 * 2))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: EdgeInsets.only(
-                  top: Dimensions.height10,
-                  bottom: Dimensions.height10,
-                  left: Dimensions.width10,
-                  right: Dimensions.width10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: AppColors.primary),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
-                      Icons.remove,
-                      color: AppColors.third,
+        child: GetBuilder<PopularProductController>(
+          builder: (popularProduct) {
+            return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                        top: Dimensions.height10,
+                        bottom: Dimensions.height10,
+                        left: Dimensions.width10,
+                        right: Dimensions.width10),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                        color: AppColors.primary),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: (() {
+                              popularProduct.setQuantity(false);
+                            }),
+                            child: Icon(
+                              Icons.remove,
+                              color: AppColors.third,
+                            ),
+                          ),
+                          SizedBox(
+                            width: Dimensions.width10,
+                          ),
+                          BigText(
+                            text: popularProduct.inCardItems.toString(),
+                            color: AppColors.third,
+                          ),
+                          SizedBox(
+                            width: Dimensions.width10,
+                          ),
+                          GestureDetector(
+                            onTap: (() {
+                              popularProduct.setQuantity(true);
+                            }),
+                            child: Icon(
+                              Icons.add,
+                              color: AppColors.third,
+                            ),
+                          ),
+                        ]),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      popularProduct.addItem(product);
+                      print("in cart items = " +
+                          popularProduct.inCardItems.toString());
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          top: Dimensions.height10,
+                          bottom: Dimensions.height10,
+                          left: Dimensions.width10,
+                          right: Dimensions.width20),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius20),
+                          color: AppColors.third),
+                      child: BigText(
+                        text: '\$ ${product.price} | Add to cart',
+                        color: AppColors.primary,
+                      ),
                     ),
-                    SizedBox(
-                      width: Dimensions.width10,
-                    ),
-                    BigText(
-                      text: '0',
-                      color: AppColors.third,
-                    ),
-                    SizedBox(
-                      width: Dimensions.width10,
-                    ),
-                    Icon(
-                      Icons.add,
-                      color: AppColors.third,
-                    ),
-                  ]),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                  top: Dimensions.height10,
-                  bottom: Dimensions.height10,
-                  left: Dimensions.width20,
-                  right: Dimensions.width20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: AppColors.third),
-              child: BigText(
-                text: '\$10 | Add to cart',
-                color: AppColors.primary,
-              ),
-            )
-          ],
+                  ),
+                ]);
+          },
         ),
       ),
     );

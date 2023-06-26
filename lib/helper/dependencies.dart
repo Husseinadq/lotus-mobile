@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:lotus/controller/cart_controller.dart';
 import 'package:lotus/controller/popular_product_controller.dart';
 import 'package:lotus/data/api/api_clint.dart';
+import 'package:lotus/data/repository/cart_repo.dart';
 import 'package:lotus/data/repository/popular_product_repo.dart';
 import 'package:lotus/utils/app_constants.dart';
 
@@ -13,10 +15,12 @@ Future<void> init() async {
 
 //repos
   Get.lazyPut(() => PopularProductRepo(apiClient: Get.find()));
-    Get.lazyPut(() => RecommendedProductRepo(apiClient: Get.find()));
-
+  Get.lazyPut(() => RecommendedProductRepo(apiClient: Get.find()));
+  Get.lazyPut(() => CartRepo());
 
 //controllers
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
-  Get.lazyPut(() => RecommendedProductController(recommendedProductRepo: Get.find()));
+  Get.lazyPut(
+      () => RecommendedProductController(recommendedProductRepo: Get.find()));
+  Get.lazyPut(() => CartController(cartRepo: Get.find()));
 }

@@ -145,7 +145,8 @@ class _SliderWidgetState extends State<SliderWidget> {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(
-                          AppConstants.BASE_URL + "/uploads/" + product.img!))),
+                         /* AppConstants.BASE_URL + "/uploads/" + product.img!*/
+                         product.img.toString()))),
             ),
           ),
           Align(
