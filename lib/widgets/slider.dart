@@ -39,13 +39,11 @@ class _SliderWidgetState extends State<SliderWidget> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-         //########## Strat home pages slider  ##########//
+        //########## Strat home pages slider  ##########//
         GetBuilder<PopularProductController>(builder: ((popularProducts) {
           return Container(
               child: Column(
@@ -71,31 +69,7 @@ class _SliderWidgetState extends State<SliderWidget> {
           ));
         })),
         //########## Strat dots under the slider ##########//
-        GetBuilder<PopularProductController>(
-          builder: ((popularProducts) {
-            return DotsIndicator(
-              dotsCount: popularProducts.popularProductList.isEmpty
-                  ? 1
-                  : popularProducts.popularProductList.length,
-              position: _currPageValue,
-              decorator: DotsDecorator(
-                color: AppColors.thirdAccent,
-                activeColor: AppColors.third,
-                size: const Size.square(9.0),
-                activeSize: const Size(18.0, 10.0),
-                activeShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
-              ),
-            );
-          }),
-          //########## End dots under the slider ##########//
-
-          //########## End home pages slider  ##########//
-
-          //########## Strat Product Popular Section ##########//
-
-          //########## End  Product Popular Section ##########//
-        ),
+        //########## End dots under the slider ##########//
       ],
     );
   }
@@ -132,7 +106,6 @@ class _SliderWidgetState extends State<SliderWidget> {
         children: [
           GestureDetector(
             onTap: (() {
-              print(product.id);
               Get.toNamed(RouteHelper.getProductDetail(product.id!));
             }),
             child: Container(
@@ -142,14 +115,38 @@ class _SliderWidgetState extends State<SliderWidget> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius30),
                   color: AppColors.third,
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                         /* AppConstants.BASE_URL + "/uploads/" + product.img!*/
-                         product.img.toString()))),
+                  image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(
+                      /* AppConstants.BASE_URL + "/uploads/" + product.img!*/
+                      product.img.toString()))),
             ),
           ),
+
+          //########## Strat dots under the slider ##########//
           Align(
+            alignment: Alignment.bottomCenter,
+            child: GetBuilder<PopularProductController>(
+              builder: ((popularProducts) {
+                return DotsIndicator(
+                  dotsCount: popularProducts.popularProductList.isEmpty
+                      ? 1
+                      : popularProducts.popularProductList.length,
+                  position: _currPageValue,
+                  decorator: DotsDecorator(
+                    color: AppColors.thirdAccent,
+                    activeColor: AppColors.third,
+                    size: const Size.square(9.0),
+                    activeSize: const Size(18.0, 10.0),
+                    activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                  ),
+                );
+              }),
+            ),
+          )
+
+          //########## End dots under the slider ##########//
+
+          /* Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               height: Dimensions.pageViewTextContainer,
@@ -171,9 +168,9 @@ class _SliderWidgetState extends State<SliderWidget> {
                       left: Dimensions.height15,
                       right: Dimensions.height15,
                       top: Dimensions.height15),
-                  child: CardMainDate(title: product.name.toString())),
+                  child: CardMainDate(title: produt.name.toString())),
             ),
-          )
+          )*/
         ],
       ),
     );

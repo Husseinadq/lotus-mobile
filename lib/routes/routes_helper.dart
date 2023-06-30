@@ -21,10 +21,8 @@ class RouteHelper {
         name: product_detail,
         page: () {
           var productId = Get.parameters['productId'];
-          return ProductDetail(
-            productId: int.parse(productId!),
-          );
+          return ProductDetail();
         }),
-    GetPage(name: cart, page:() =>  CartScreen())
+    GetPage(name: cart, page: () => CartScreen())
   ];
 }

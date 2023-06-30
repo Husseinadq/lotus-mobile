@@ -45,6 +45,7 @@ class PopularProductController extends GetxController {
       _popularProductList = [];
       _popularProductList.addAll(Products.fromJson(response.body)
           .products); //we bass the data after we format it and call get products method
+    
       _isLoaded = true;
       update();
 

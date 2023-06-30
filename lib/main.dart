@@ -4,6 +4,7 @@ import 'package:lotus/pages/home/Main_shop_page.dart';
 import 'package:get/get.dart';
 import 'package:lotus/pages/home/home_screen.dart';
 import 'package:lotus/pages/product/product_detail.dart';
+import 'package:lotus/pages/profile/profile_screan.dart';
 import 'package:lotus/routes/routes_helper.dart';
 import 'controller/popular_product_controller.dart';
 import 'helper/dependencies.dart' as dep;
@@ -26,10 +27,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-      
-        home: HomeScreen(),
-        initialRoute: RouteHelper.initial,
-        getPages: RouteHelper.routes,
+      home: ProfileScreen(),
+      //  home: HomeScreen(),
+        //initialRoute: RouteHelper.initial,
+       // getPages: RouteHelper.routes,
+        
         );
   }
 }

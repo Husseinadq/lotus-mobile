@@ -7,8 +7,8 @@ class Dimensions {
   //screenHeigt=759.0 / the item normal size size
   //screenWidth=360.0
 
-  static double pageView = screenHeight / 2.64;
-  static double pageViewContainer = screenHeight / 3.84;
+  static double pageView = screenHeight / (screenHeight / 200);
+  static double pageViewContainer = screenHeight / (screenWidth / 300);
   static double pageViewTextContainer = screenHeight / 7.03;
 
   //############  Start  Size  ############//
@@ -41,6 +41,9 @@ class Dimensions {
   static double width75 = screenWidth / (screenWidth / 75);
   static double width100 = screenWidth / (screenWidth / 100);
   static double width120 = screenWidth / (screenWidth / 120);
+  static double width130 = screenWidth / (screenWidth / 130);
+  static double width150 = screenWidth / (screenWidth / 150);
+
   static double width200 = screenWidth / (screenWidth / 200);
 //############  End Width Size  ############//
 
@@ -56,9 +59,12 @@ class Dimensions {
   static double height45 = screenHeight / (screenHeight / 45);
   static double height50 = screenHeight / (screenHeight / 50);
   static double height75 = screenHeight / (screenHeight / 75);
+  static double height90 = screenHeight / (screenHeight / 90);
   static double height100 = screenHeight / (screenHeight / 100);
   static double height120 = screenHeight / (screenHeight / 120);
+  static double height150 = screenHeight / (screenHeight / 150);
   static double height250 = screenHeight / (screenHeight / 250);
+  static double height300 = screenHeight / (screenHeight / 300);
   static double height350 = screenHeight / (screenHeight / 350);
 //############  Start Height Size  ############//
 
@@ -110,4 +116,11 @@ class Dimensions {
 
 //############  Start Icons Size  ############//
 
+//############  Start  Category Slider  ############//Section
+  static double categorySliderHeigt = screenHeight / (screenHeight / 100);
+//############  Start  Category Slider  ############//
+
+//############  Start  Category Slider  ############//Section
+  static double sectionHeight = screenHeight / (screenHeight / 350);
+//############  Start  Category Slider  ############//
 }
