@@ -25,7 +25,7 @@ class CategoryController extends GetxController {
         (element) {
           print(element.id);
           print(element.name);
-        },
+        } ,
       );
       update();
     }

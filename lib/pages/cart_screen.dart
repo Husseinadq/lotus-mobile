@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/widgets/big_text.dart';
 import 'package:lotus/widgets/product/product_cart_card.dart';
@@ -44,6 +45,8 @@ class CartScreen extends StatelessWidget {
           )
         ],
       ),
+            // bottomNavigationBar: NavigationBarWidget(index: 4 ,),
+
     );
   }
 }

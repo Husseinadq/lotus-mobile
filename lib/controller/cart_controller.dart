@@ -13,7 +13,7 @@ class CartController extends GetxController {
   });
 
   Map<int, CartModel> _items = {};
-
+  
   void addItem(ProductModel product, int quantity) {
     var totalQuantity = 0;
     if (_items.containsKey(product.id)) {

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';
 import 'package:lotus/widgets/small_text.dart';
+
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -67,6 +69,7 @@ class ProfileScreen extends StatelessWidget {
           ],
         )),
       ),
+      // bottomNavigationBar: NavigationBarWidget(index: 3),
     );
   }
 
