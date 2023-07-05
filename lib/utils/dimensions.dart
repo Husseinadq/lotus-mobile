@@ -62,8 +62,10 @@ class Dimensions {
   static double height90 = screenHeight / (screenHeight / 90);
   static double height100 = screenHeight / (screenHeight / 100);
   static double height120 = screenHeight / (screenHeight / 120);
+  static double height130 = screenHeight / (screenHeight / 130);
   static double height150 = screenHeight / (screenHeight / 150);
   static double height250 = screenHeight / (screenHeight / 250);
+  static double height200 = screenHeight / (screenHeight / 200);
   static double height300 = screenHeight / (screenHeight / 300);
   static double height350 = screenHeight / (screenHeight / 350);
 //############  Start Height Size  ############//
@@ -71,6 +73,9 @@ class Dimensions {
 //############  Start font Size  ############//
   static double font5 = screenHeight / (screenHeight / 5);
   static double font10 = screenHeight / (screenHeight / 10);
+  static double font12 = screenHeight / (screenHeight / 12);
+  static double font13 = screenHeight / (screenHeight / 13);
+  static double font14 = screenHeight / (screenHeight / 14);
   static double font15 = screenHeight / (screenHeight / 15);
   static double font20 = screenHeight / (screenHeight / 20);
   static double font25 = screenHeight / (screenHeight / 25);
@@ -123,4 +128,10 @@ class Dimensions {
 //############  Start  Category Slider  ############//Section
   static double sectionHeight = screenHeight / (screenHeight / 350);
 //############  Start  Category Slider  ############//
+
+//########### start category screen dimensions ###########
+  static double categoryScreenHeight = screenHeight - height130;
+  static double mainCategorySectionHeight = height75;
+  static double expansionTileSection = height200;
+//########### start category screen dimensions ###########
 }

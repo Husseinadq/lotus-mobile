@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(Dimensions.radius15)),
         child: GestureDetector(
           onTap: () {
-            Get.toNamed(RouteHelper.productDetail);
+            Get.toNamed(RouteHelper.getProductDetail(1));
           },
           child: Column(children: [
             Stack(children: [

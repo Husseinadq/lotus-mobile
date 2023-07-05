@@ -9,10 +9,10 @@ import 'app_bar_search.dart';
 
 class AppBarWidget extends StatelessWidget {
   AppBarWidget({super.key});
-  final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: Dimensions.height50,
       width: Dimensions.screenWidth,
       margin:
           EdgeInsets.only(top: Dimensions.height25, bottom: Dimensions.height5),
@@ -22,18 +22,34 @@ class AppBarWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Container(
-                  height: Dimensions.height45,
-                  width: double.maxFinite,
-                  child: SearchWidget()),
-            ),
             Container(
               child: BigText(
-                text: 'WOW',
-                color: AppColors.thirdAccent,
+                text: 'Lotus',
+                color: AppColors.secondry,
                 size: Dimensions.font30,
               ),
+            ),
+            Expanded(
+              child: Container(
+                  margin: EdgeInsets.only(left: 5, top: 5),
+                  padding: EdgeInsets.only(
+                    left: 10,
+                  ),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.secondry),
+                      borderRadius: BorderRadius.circular(15)),
+                  height: Dimensions.height45,
+                  width: double.maxFinite,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.search),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      SmallText(text: 'whate are you looking for ?', size: 14),
+                    ],
+                  )),
             ),
             // Center(
             //   child: Container(

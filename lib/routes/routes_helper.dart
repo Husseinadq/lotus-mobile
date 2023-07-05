@@ -22,12 +22,26 @@ class RouteHelper {
   static String getCart() => '$cart';
 
   static String getProductDetail(int productId) =>
-      '$productDetail?productId=$productId';
+      '$productDetail?productId=$productId&pageNumber=2';
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => MainShopPage()),
-    GetPage(name: getCategories(), page: () => MainShopPage()),
-    GetPage(name: getOffers(), page: () => MainShopPage()),
+    GetPage(
+        name: initial,
+        page: () {
+          return MainShopPage(
+          );
+        }),
+    GetPage(
+        name: getCategories(),
+        page: () {
+          return MainShopPage(
+          );
+        }),
+    GetPage(
+        name: getOffers(),
+        page: () {
+          return MainShopPage();
+        }),
     GetPage(
         name: profile,
         page: () {
@@ -39,7 +53,11 @@ class RouteHelper {
         name: productDetail,
         page: () {
           var productId = Get.parameters['productId'];
-          return ProductDetail();
+          var pageNumber = Get.parameters['pageNumber'];
+
+          return ProductDetail(
+            productId: int.parse(productId.toString()),
+          );
         }),
   ];
 }

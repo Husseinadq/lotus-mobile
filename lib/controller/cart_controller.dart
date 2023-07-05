@@ -12,7 +12,7 @@ class CartController extends GetxController {
     required this.cartRepo,
   });
 
-  Map<int, CartModel> _items = {};
+ final Map<int, CartModel> _items = {};
   
   void addItem(ProductModel product, int quantity) {
     var totalQuantity = 0;

@@ -31,24 +31,28 @@ class _SearchWidgetState extends State<SearchWidget> {
           controller: _searchController,
           cursorColor: AppColors.third,
           decoration: InputDecoration(
-            focusColor: Colors.amber,
-            hoverColor: Colors.amber,
-            fillColor: Colors.amber,
-            iconColor: Colors.amber,
-            hintText: "whate are you looking for",
-            suffixIcon: IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-              color: AppColors.third,
-            ),
-            prefixIcon: IconButton(
-              icon: Icon(Icons.clear),
-              onPressed: () => _searchController.clear(),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          ),
+              iconColor: Colors.amber,
+              hintText: "whate are you looking for",
+              suffixIcon: IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {},
+                color: AppColors.third,
+              ),
+              prefixIcon: IconButton(
+                icon: Icon(Icons.clear),
+                onPressed: () => _searchController.clear(),
+              ),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(
+                    width: 1.0,
+                    color: Colors.green,
+                  )),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(
+                    width: 3.0, color: Colors.black, style: BorderStyle.none),
+              )),
         ),
       ),
     );

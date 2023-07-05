@@ -9,24 +9,24 @@ import '../../widgets/category_list_view.dart';
 import '../../widgets/section.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             AppBarWidget(),
-            SliderWidget(),
+            const SliderWidget(),
             // GetBuilder<RecommendedProductController>(builder: ((controller) => PopularProduct(recommendedProduct: controller,))),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
-                  CategoryListView(),
-                  Section(title: 'New'),
+                  const CategoryListView(),
+                  // Section(title: 'New'),
                   Section(title: 'Old'),
                 ],
               ),
@@ -40,8 +40,6 @@ class HomeScreen extends StatelessWidget {
           Get.find<CategoryController>().getAllCategories();
         },
       ),
-   
     );
   }
 }
-

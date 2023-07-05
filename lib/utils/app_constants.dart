@@ -1,3 +1,10 @@
+import 'package:flutter/material.dart';
+
+import '../pages/cart_screen.dart';
+import '../pages/category/categories_screen.dart';
+import '../pages/home/home_screen.dart';
+import '../pages/profile/profile_screan.dart';
+
 class AppConstants {
   static const String LANG = "&lang=en";
 
@@ -18,4 +25,12 @@ class AppConstants {
 
   //#### end category url route
 
+  static int PAGENUMBER = 0;
+  static const List<Widget> NAV_BAR_SCREEN = [
+    HomeScreen(),
+    CategoriesScreen(),
+    HomeScreen(),
+    ProfileScreen(),
+    CartScreen()
+  ];
 }
