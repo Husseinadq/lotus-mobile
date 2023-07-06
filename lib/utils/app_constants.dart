@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../pages/cart_screen.dart';
+import '../pages/cart/cart_screen.dart';
 import '../pages/category/categories_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/profile/profile_screan.dart';
@@ -22,8 +22,13 @@ class AppConstants {
   //#### start category url route
   static const String SINGLE_CATEGORY_URL = "/get-single-category/";
   static const String ALL_CATEGORY_URL = "/get-category";
-
   //#### end category url route
+
+  //#### start cart url route
+  static const String ALL_CART_ITEMS = "/post-cart-items";
+  static const String UPDATE_CART = "/post-update-cart-item";
+  static const String REMOVE_ITEM = "/post-delete-cart-item";
+  //#### end cart url route
 
   static int PAGENUMBER = 0;
   static const List<Widget> NAV_BAR_SCREEN = [

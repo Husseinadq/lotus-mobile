@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:lotus/pages/cart_screen.dart';
+import 'package:lotus/pages/cart/cart_screen.dart';
 import 'package:lotus/pages/home/Main_shop_page.dart';
 import 'package:lotus/pages/home/home_screen.dart';
 import 'package:lotus/pages/profile/profile_screan.dart';

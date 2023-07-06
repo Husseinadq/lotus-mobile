@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lotus/controller/cart_controller.dart';
 import 'package:lotus/controller/category_controller.dart';
 import 'package:lotus/widgets/slider.dart';
 
@@ -38,6 +39,7 @@ class HomeScreen extends StatelessWidget {
         onPressed: () {
           Get.find<CategoryController>().getSingleCategory(1);
           Get.find<CategoryController>().getAllCategories();
+          Get.find<CartController>().getAllCartItems();
         },
       ),
     );

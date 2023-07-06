@@ -6,7 +6,7 @@ class Categories {
   String? _message;
   List<Category> get categories => _categories;
   late List<Category> _categories;
-  Categories({
+  Categories({  
    required status,
    required errorNumber,
    required message,

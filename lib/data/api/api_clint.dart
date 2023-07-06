@@ -29,4 +29,13 @@ class ApiClient extends GetConnect implements GetxService {
       return Response(statusCode: 1, statusText: e.toString());
     }
   }
+  //this method get data from server
+  Future<Response> postData(String uri,Map<String,dynamic> data) async {
+    try {
+      Response response = await post(uri,data);
+      return response;
+    } catch (e) {
+      return Response(statusCode: 1, statusText: e.toString());
+    }
+  }
 }

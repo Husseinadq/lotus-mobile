@@ -83,20 +83,20 @@ class PopularProductController extends GetxController {
     _inCartItems = 0;
     _cart = cart;
     var exist = false;
-    exist = cart.existInCart(product);
+    // exist = cart.existInCart(product);
     if (exist) {
-      _inCartItems = _cart.getQuantity(product);
+      // _inCartItems = _cart.getQuantity(product);
     }
   }
 
   void addItem(ProductModel product) {
     // if (quantity > 0) {
 
-    _cart.addItem(product, _quantity);
-    print("cart total items = " + totalItems.toString());
+    // _cart.addItem(product, _quantity);
+    // print("cart total items = " + totalItems.toString());
     print("_quantity = " + _quantity.toString());
     _quantity = 0;
-    _inCartItems = _cart.getQuantity(product);
+    // _inCartItems = _cart.getQuantity(product);
     update();
     // } else {
     //   Get.snackbar(
@@ -104,7 +104,7 @@ class PopularProductController extends GetxController {
     // }
   }
 
-  int get totalItems {
-    return _cart.totalItems;
-  }
+  // int get totalItems {
+  //   // return _cart.totalItems;
+  // }
 }

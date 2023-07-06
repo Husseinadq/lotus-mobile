@@ -12,69 +12,106 @@ class CartController extends GetxController {
     required this.cartRepo,
   });
 
- final Map<int, CartModel> _items = {};
-  
-  void addItem(ProductModel product, int quantity) {
-    var totalQuantity = 0;
-    if (_items.containsKey(product.id)) {
-      _items.update(product.id!, (value) {
-        totalQuantity = value.quantity! + quantity;
-        return CartModel(
-            id: value.id,
-            img: value.img,
-            name: value.name,
-            price: value.price,
-            isExit: true,
-            quantity: value.quantity! + quantity,
-            time: DateTime.now().toString());
-      });
-      if (totalQuantity <= 0) {}
-      _items.remove(product.id);
-    } else {
-      if (quantity > 0) {
-        _items.putIfAbsent(
-            product.id!,
-            () => CartModel(
-                id: product.id,
-                img: product.img,
-                name: product.name,
-                price: product.price,
-                isExit: true,
-                quantity: quantity,
-                time: DateTime.now().toString()));
-      } else {
-        Get.snackbar(
-            "Item Count", "You shold at least add an item in the cart !!");
-      }
+  List<CartItem> _cartItems = [];
+  List<CartItem> get cartItems => _cartItems;
+  final Map<String, dynamic> _allCartItemsPost = {'user': 1};
+  Map<String, dynamic> _body = {};
+  bool _isLoaded = false;
+  bool get isLoaded => _isLoaded;
+
+  Future<void> getAllCartItems() async {
+    Response response = await cartRepo.getAllCartItems(_allCartItemsPost);
+    if (response.statusCode == 200) {
+      _cartItems = [];
+      _cartItems.addAll(CartModel.fromJson(response.body)
+          .cartItems); //we bass the data after we format it and call get products method
+
+      _isLoaded = true;
+      update();
+
+      ///like setStait
     }
   }
 
-  bool existInCart(ProductModel productModel) {
-    if (_items.containsKey(productModel.id)) {
-      return true;
-    } else {
-      return false;
+  Future<void> updateItemQuantity(int id, bool mode) async {
+    _isLoaded = false;
+    _body = {"id": id, "quantity": mode == true ? 1 : -1};
+    Response response = await cartRepo.updateCartQuantity(_body);
+    if (response.statusCode == 200) {
+      getAllCartItems();
     }
   }
 
-  int getQuantity(ProductModel product) {
-    var quantity = 0;
-    if (_items.containsKey(product.id)) {
-      _items.forEach((key, value) {
-        if (key == product.id) {
-          quantity = value.quantity!;
-        }
-      });
+  Future<void> removeFromCart(int id) async {
+    _isLoaded = false;
+    _body = {'id': id};
+    Response response = await cartRepo.removFromCart(_body);
+    if (response.statusCode == 200) {
+      getAllCartItems();
     }
-
-    return quantity;
   }
 
-  int get totalItems{
-    var totalQuantity = 0;
-    _items.forEach((key, value) {
-      totalQuantity += value.quantity!;
-    });
-    return totalQuantity;
-  }
+  // void addItem(ProductModel product, int quantity) {
+  //   var totalQuantity = 0;
+  //   if (_items.containsKey(product.id)) {
+  //     _items.update(product.id!, (value) {
+  //       totalQuantity = value.quantity! + quantity;
+  //       return CartModel(
+  //           id: value.id,
+  //           img: value.img,
+  //           name: value.name,
+  //           price: value.price,
+  //           isExit: true,
+  //           quantity: value.quantity! + quantity,
+  //           time: DateTime.now().toString());
+  //     });
+  //     if (totalQuantity <= 0) {}
+  //     _items.remove(product.id);
+  //   } else {
+  //     if (quantity > 0) {
+  //       _items.putIfAbsent(
+  //           product.id!,
+  //           () => CartModel(
+  //               id: product.id,
+  //               img: product.img,
+  //               name: product.name,
+  //               price: product.price,
+  //               isExit: true,
+  //               quantity: quantity,
+  //               time: DateTime.now().toString()));
+  //     } else {
+  //       Get.snackbar(
+  //           "Item Count", "You shold at least add an item in the cart !!");
+  //     }
+  //   }
+  // }
+
+  // bool existInCart(ProductModel productModel) {
+  //   if (_items.containsKey(productModel.id)) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  // int getQuantity(ProductModel product) {
+  //   var quantity = 0;
+  //   if (_items.containsKey(product.id)) {
+  //     _items.forEach((key, value) {
+  //       if (key == product.id) {
+  //         quantity = value.quantity!;
+  //       }
+  //     });
+  //   }
+
+  //   return quantity;
+  // }
+
+  // int get totalItems {
+  //   var totalQuantity = 0;
+  //   _items.forEach((key, value) {
+  //     totalQuantity += value.quantity!;
+  //   });
+  //   return totalQuantity;
+  // }
 }

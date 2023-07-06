@@ -2,49 +2,74 @@ import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class CartModel {
-  int? id;
-  String? name;
-  double? price;
-  String? img;
-  int? quantity;
-  bool ?isExit;
-  String? time;
+  bool? _status;
+  String? _errorNumber;
+  String? _message;
+  List<CartItem> get cartItems => _cardItems;
+  late List<CartItem> _cardItems;
   CartModel({
+    required status,
+    required errorNumber,
+    required message,
+    required cardItems,
+  }) {
+    this._status = status;
+    this._errorNumber = errorNumber;
+    this._message = message;
+    this._cardItems = cardItems;
+  }
+  // Map<String, dynamic> toMap() {
+  //   return <String, dynamic>{
+  //     'id': _id,
+  //     'pruductId': _pruductId,
+  //     'cartId': _cartId,
+  //     'price': _price,
+  //     'quantity': _quantity,
+  //   };
+  // }
+
+  CartModel.fromJson(Map<String, dynamic> json) {
+    _status = json['status'];
+    _errorNumber = json['errorNumber'];
+    _message = json['message'];
+    if (json['card_items'] != null) {
+      _cardItems = <CartItem>[];
+      json['card_items'].forEach((v) {
+        _cardItems.add(CartItem.fromJson(v));
+      });
+    }
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory CartModel.fromJson(String source) => CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
+}
+
+class CartItem {
+  int? id;
+  int? productId;
+  int? cartId;
+  double? price;
+  int? quantity;
+  String? productName;
+  String? imageUrl;
+  CartItem({
     this.id,
-    this.name,
+    this.productId,
+    this.cartId,
     this.price,
-    this.img,
     this.quantity,
-     this.isExit,
-    this.time,
+    this.imageUrl,
+    this.productName
   });
 
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'price': price,
-      'img': img,
-      'quantity': quantity,
-      'isExit': isExit,
-      'time': time,
-    };
-  }
-
-  factory CartModel.fromMap(Map<String, dynamic> json) {
-    return CartModel(
+  factory CartItem.fromJson(Map<String, dynamic> json) {
+    return CartItem(
       id: json['id'],
-      name: json['name'] ,
-      price: json['price'],
-      img: json['img'] ,
-      quantity: json['quantity'],
-      isExit: json['isExit'] as bool,
-      time: json['time'] ,
+      productId: json['product_id'],
+      cartId: json['cart_id'],
+      price:json['price'],
+      quantity: json['quantity'],imageUrl: json['imageUrl'],productName: json['productName'],
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory CartModel.fromJson(String source) => CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

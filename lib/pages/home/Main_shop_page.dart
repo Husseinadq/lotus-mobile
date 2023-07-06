@@ -3,7 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:lotus/pages/cart_screen.dart';
+import 'package:lotus/pages/cart/cart_screen.dart';
 import 'package:lotus/pages/home/home_screen.dart';
 import 'package:lotus/pages/profile/profile_screan.dart';
 import 'package:lotus/utils/app_constants.dart';
