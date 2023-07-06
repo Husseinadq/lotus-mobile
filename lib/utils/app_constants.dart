@@ -34,7 +34,6 @@ class AppConstants {
   static const List<Widget> NAV_BAR_SCREEN = [
     HomeScreen(),
     CategoriesScreen(),
-    HomeScreen(),
     ProfileScreen(),
     CartScreen()
   ];

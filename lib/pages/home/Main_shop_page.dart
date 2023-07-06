@@ -53,11 +53,6 @@ class _MainShopPageState extends State<MainShopPage> {
               color: AppColors.primary,
             ),
             Icon(
-              Icons.local_offer,
-              size: 30,
-              color: AppColors.primary,
-            ),
-            Icon(
               Icons.person,
               size: 30,
               color: AppColors.primary,

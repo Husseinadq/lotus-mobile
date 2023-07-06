@@ -12,7 +12,7 @@ class CategoryListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Get.find<CategoryController>().getAllCategories();
+    Get.find<CategoryController>().getAllCategories();
     return Container(
         height: Dimensions.categorySliderHeigt,
         width: double.maxFinite,
@@ -28,16 +28,22 @@ class CategoryListView extends StatelessWidget {
                   width: Dimensions.height90,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                         child: CircleAvatar(
-                          radius: Dimensions.radius40,
-                          backgroundColor: Colors.orange,
+                          radius: Dimensions.radius35,
+                          backgroundColor: AppColors.grey,
                         ),
                       ),
-                      BigText(
-                          text: categoriesController
-                              .allCategoriesList[index].name!)
+                      Text(
+                        categoriesController.allCategoriesList[index].name!,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: AppColors.secondry,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14),
+                      )
                     ],
                   ),
                 );

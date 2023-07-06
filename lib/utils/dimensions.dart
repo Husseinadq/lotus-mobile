@@ -49,6 +49,7 @@ class Dimensions {
 
 //############  Start Height Size  ############//
   static double height5 = screenHeight / (screenHeight / 5);
+  static double height7 = screenHeight / (screenHeight / 7);
   static double height10 = screenHeight / (screenHeight / 10);
   static double height15 = screenHeight / (screenHeight / 15);
   static double height20 = screenHeight / (screenHeight / 20);
@@ -58,6 +59,7 @@ class Dimensions {
   static double height40 = screenHeight / (screenHeight / 40);
   static double height45 = screenHeight / (screenHeight / 45);
   static double height50 = screenHeight / (screenHeight / 50);
+  static double height60 = screenHeight / (screenHeight / 60);
   static double height75 = screenHeight / (screenHeight / 75);
   static double height90 = screenHeight / (screenHeight / 90);
   static double height100 = screenHeight / (screenHeight / 100);
@@ -131,7 +133,7 @@ class Dimensions {
 
 //########### start category screen dimensions ###########
   static double categoryScreenHeight = screenHeight - height130;
-  static double mainCategorySectionHeight = height75;
+  static double mainCategorySectionHeight = height60;
   static double expansionTileSection = height200;
 //########### start category screen dimensions ###########
 }

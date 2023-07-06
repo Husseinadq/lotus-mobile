@@ -9,4 +9,5 @@ class AppColors {
   static final Color thirdAccent = Color.fromARGB(255, 232, 209, 125);
   static final Color grey = Colors.grey[400]!;
   static final Color lightgrey = Colors.grey[300]!;
+  static final Color lightergrey = Colors.grey[200]!;
 }
