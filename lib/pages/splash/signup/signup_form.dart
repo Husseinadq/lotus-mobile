@@ -16,7 +16,7 @@ class _LoginFormState extends State<SignUpForm> {
   final TextEditingController emailEditingController = TextEditingController();
   final TextEditingController firstNameEditingController =
       TextEditingController();
-  final TextEditingController phoneEditingController = TextEditingController();
+  final TextEditingController mobileEditingController = TextEditingController();
   final TextEditingController passwordEditingController =
       TextEditingController();
   Map<String, TextEditingController> _editTextControllers = {};
@@ -26,7 +26,7 @@ class _LoginFormState extends State<SignUpForm> {
   @override
   void dispose() {
     firstNameEditingController.dispose();
-    phoneEditingController.dispose();
+    mobileEditingController.dispose();
     emailEditingController.dispose();
     passwordEditingController.dispose();
     super.dispose();
@@ -35,94 +35,99 @@ class _LoginFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          ///start first name input
-          TextfildStander(
-              textEditingController: firstNameEditingController,
-              hintText: 'First Name',
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            ///start first name input
+            TextfildStander(
+                textEditingController: firstNameEditingController,
+                hintText: 'First Name',
+                textInputType: TextInputType.text,
+                isObscure: false),
+            SizedBox(
+              height: 10,
+            ),
+
+            ///start phone & email input
+            TextfildStander(
+                textEditingController: mobileEditingController,
+                hintText: 'Phone Number',
+                textInputType: TextInputType.phone,
+                isObscure: false),
+            SizedBox(
+              height: 10,
+            ),
+            TextfildStander(
+                textEditingController: emailEditingController,
+                hintText: 'Email',
+                textInputType: TextInputType.emailAddress,
+                isObscure: false),
+
+            ///end phone input
+
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     GestureDetector(
+            //       onTap: (() {
+            //         if (isUsePhoneNumber) {
+            //           setState(() {
+            //             isUsePhoneNumber = false;
+            //           });
+            //         } else {
+            //           setState(() {
+            //             isUsePhoneNumber = true;
+            //           });
+            //         }
+            //       }),
+            //       child: Row(
+            //         children: [
+            //           Text(
+            //             "sign up using",
+            //             style:
+            //                 TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
+            //           ),
+            //           Text(
+            //             isUsePhoneNumber ? " email" : " phone number",
+            //             style:
+            //                 TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ],
+            // ),
+
+            SizedBox(
+              height: 10,
+            ),
+
+            ///start password input
+            TextfildStander(
+              textEditingController: passwordEditingController,
+              hintText: 'Password',
               textInputType: TextInputType.text,
-              isObscure: false),
-          SizedBox(
-            height: 10,
-          ),
+              isObscure: true,
+            ),
 
-          ///start phone & email input
-          isUsePhoneNumber
-              ? TextfildStander(
-                  textEditingController: phoneEditingController,
-                  hintText: 'Phone Number',
-                  textInputType: TextInputType.phone,
-                  isObscure: false)
-              : TextfildStander(
-                  textEditingController: emailEditingController,
-                  hintText: 'Email',
-                  textInputType: TextInputType.emailAddress,
-                  isObscure: false),
+            ///end phone input
+            SizedBox(
+              height: 20,
+            ),
 
-          ///end phone input
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: (() {
-                  if (isUsePhoneNumber) {
-                    setState(() {
-                      isUsePhoneNumber = false;
-                    });
-                  } else {
-                    setState(() {
-                      isUsePhoneNumber = true;
-                    });
-                  }
-                }),
-                child: Row(
-                  children: [
-                    Text(
-                      "sign up using",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
-                    ),
-                    Text(
-                      isUsePhoneNumber ? " email" : " phone number",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-
-          SizedBox(
-            height: 10,
-          ),
-
-          ///start password input
-          TextfildStander(
-            textEditingController: passwordEditingController,
-            hintText: 'Password',
-            textInputType: TextInputType.text,
-            isObscure: true,
-          ),
-
-          ///end phone input
-          SizedBox(
-            height: 20,
-          ),
-
-          SubmitButton(
-            title: 'Sign Up',
-            formKey: _formKey,
-            editTextControllers: _editTextControllers = {
-              "firstName": firstNameEditingController,
-              "email": emailEditingController,
-              "phone": phoneEditingController,
-              "password": passwordEditingController,
-            },
-          )
-        ],
+            SubmitButton(
+              title: 'Sign Up',
+              formKey: _formKey,
+              editTextControllers: _editTextControllers = {
+                "firstName": firstNameEditingController,
+                "email": emailEditingController,
+                "mobile": mobileEditingController,
+                "password": passwordEditingController,
+              },
+            )
+          ],
+        ),
       ),
     );
   }

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      // home: SplashScreen(),
+      home: SplashScreen(),
       theme: ThemeData(primaryColor: Colors.amber),
       initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes,

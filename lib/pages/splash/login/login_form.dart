@@ -110,9 +110,10 @@ class _LoginFormState extends State<LoginForm> {
               title: 'Login',
               formKey: _loginFormKey,
               editTextControllers: _editTextControllers = {
-                'email': emailEditingController,
+                'emailOrMobile': isUsePhoneNumber
+                    ? phoneEditingController
+                    : emailEditingController,
                 'password': passwordEditingController,
-                'phone': phoneEditingController
               },
             )
           ],

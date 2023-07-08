@@ -9,28 +9,31 @@ class UserController extends GetxController {
   UserController({
     required this.userRepo,
   });
-  late User _user;
+  User _user = User(
+      id: 0,
+      firstName: "firstName",
+      middleName: "middleName",
+      lastName: "lastName",
+      mobile: "mobile",
+      email: "email",
+      token: "token");
   bool _isConfirm = false;
 
   User get getUser => _user;
   bool get isConfirm => _isConfirm;
-  //  = User(
-  //     id: 0,
-  //     firstName: "firstName",
-  //     middleName: "middleName",
-  //     lastName: "lastName",
-  //     mobile: "mobile",
-  //     email: "email",
-  //     token: "token");
 
   Map<String, dynamic> _body = {};
 
-  Future<bool> login(String email, String password) async {
+  Future<bool> login(String emailOrmobile, String password) async {
     try {
-      Response response =
-          await userRepo.login(_body = {"email": email, "password": password});
+      Response response = await userRepo
+          .login(_body = {"email": emailOrmobile, "password": password});
+
       if (response.statusCode == 200) {
+        print(response.body['message']);
         if (response.body['status']) {
+          print("object= " + 200.toString());
+
           _user = User(
               id: 0,
               firstName: response.body['usre']['first_name'],
@@ -73,7 +76,42 @@ class UserController extends GetxController {
     } catch (e) {}
   }
 
-  Future<void> signUp() async {}
+  Future<bool> signUp(
+      String firstName, String mobile, String email, String password) async {
+    try {
+      Response response = await userRepo.signUp({
+        "first_name": firstName,
+        "mobile": mobile,
+        "email": email,
+        "password": password
+      });
+      if (response.statusCode == 200) {
+        print(response.body['statusNumber']);
+        print("respons status =" + response.body['status'].toString());
+        print(response.body['usre']);
+        print(response.body['message']);
+        print(response.body['usre']['token']);
+        if (response.body['status']) {
+          print("object= " + 200.toString());
+
+          _user.firstName = response.body['usre']['first_name'];
+          _user.mobile = response.body['usre']['mobile'];
+          _user.email = response.body['usre']['email'];
+          _user.token = response.body['usre']['token'];
+
+          print("object after= " + 200.toString());
+
+          update();
+          //sdf
+          return true;
+        }
+        print("falllll");
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
 
   bool isThereUser() {
     if (_user.email == "email") {

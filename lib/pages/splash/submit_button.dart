@@ -33,18 +33,49 @@ class SubmitButton extends StatelessWidget {
         if (title == 'Login') {
           if (formKey.currentState!.validate()) {
 // post to server
+            String emailOrMobile =
+                editTextControllers['emailOrMobile']!.value.text;
+            String password = editTextControllers['password']!.value.text;
+
+            print(emailOrMobile);
+            print(password);
+            Get.find<UserController>()
+                .login(emailOrMobile, password)
+                .then((value) {
+              if (value) {
+                print(value);
+                Get.toNamed(RouteHelper.getMainPage());
+              }
+            });
+          }
+        } else {
+          print("hessss");
+
+          if (formKey.currentState!.validate()) {
+            print("hessss");
+
+// post to server
+            String firstName = editTextControllers['firstName']!.value.text;
             String email = editTextControllers['email']!.value.text;
+            String mobile = editTextControllers['mobile']!.value.text;
             String password = editTextControllers['password']!.value.text;
 
             print(email);
             print(password);
-            Get.find<UserController>().login(email, password).then((value) {
+            print(firstName);
+            print(mobile);
+            Get.find<UserController>()
+                .signUp(firstName, mobile, email, password)
+                .then((value) {
+              print(value);
+
               if (value) {
-                Get.toNamed(RouteHelper.getInitial());
+                print(value);
+                Get.toNamed(RouteHelper.getMainPage());
               }
             });
           }
-        } else {}
+        }
       }),
       child: Container(
         alignment: Alignment.center,

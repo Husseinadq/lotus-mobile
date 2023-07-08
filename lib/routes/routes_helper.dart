@@ -11,10 +11,10 @@ import '../pages/splash/In_board_screen.dart';
 import '../pages/splash/signup/signup_screen.dart';
 
 class RouteHelper {
-  static const String onBoard = "/board";
+  static const String onBoard = "/on-board";
   static const String login = "/login";
   static const String signup = "/signup";
-  static const String splash = "/splash";
+  static const String mainpage = "/main-page";
 
   static const String initial = "/";
   static const String categories = "/categories";
@@ -28,7 +28,7 @@ class RouteHelper {
   static String getSignUp() => '$signup';
   static String getInitial() => '$initial';
 
-  static String  getSplash() => '$splash';
+  static String getMainPage() => '$mainpage';
   static String getCategories() => '$categories';
   static String getOffers() => '$offers';
   static String getProfile(int index) => '$profile?index=$index';
@@ -38,11 +38,10 @@ class RouteHelper {
       '$productDetail?productId=$productId&pageNumber=2';
 
   static List<GetPage> routes = [
-
     GetPage(
-        name: initial,
+        name: getInitial(),
         page: () {
-          return MainShopPage();
+          return SplashScreen();
         }),
     GetPage(
         name: getInBoard(),
@@ -58,12 +57,12 @@ class RouteHelper {
         name: getSignUp(),
         page: () {
           return SingUpScreen();
-        }),  GetPage(
-        name: getSplash(),
-        page: () {
-          return SplashScreen();
         }),
-    
+    GetPage(
+        name: getMainPage(),
+        page: () {
+          return MainShopPage();
+        }),
     GetPage(
         name: getCategories(),
         page: () {
