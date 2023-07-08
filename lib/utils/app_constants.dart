@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lotus/pages/wishlist/wishlist_screen.dart';
 
 import '../pages/cart/cart_screen.dart';
 import '../pages/category/categories_screen.dart';
@@ -31,10 +32,11 @@ class AppConstants {
   //#### end cart url route
 
   static int PAGENUMBER = 0;
-  static const List<Widget> NAV_BAR_SCREEN = [
+  static List<Widget> NAV_BAR_SCREEN = [
     HomeScreen(),
     CategoriesScreen(),
+    CartScreen(),
+    WishlistScreen(),
     ProfileScreen(),
-    CartScreen()
   ];
 }

@@ -70,13 +70,7 @@ class ProductCartCard extends StatelessWidget {
           ),
         ]),
         child:
-            // Card(
-            //   elevation: 1,
-            //   color: Colors.red,
-            //   shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.circular(20.0),
-            //   ),
-            //   child:
+          
             Container(
           padding: EdgeInsets.symmetric(
               horizontal: Dimensions.width10, vertical: Dimensions.height10),
@@ -90,8 +84,7 @@ class ProductCartCard extends StatelessWidget {
               Container(
                   width: 100,
                   height: 120,
-                  // margin: EdgeInsets.only(left: 7, top: 7, bottom: 7),
-                  // padding: EdgeInsets.all(10),
+                
                   decoration: BoxDecoration(
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(Dimensions.radius20)),
@@ -121,8 +114,7 @@ class ProductCartCard extends StatelessWidget {
                                   margin: EdgeInsets.only(left: 5),
                                   child: BigText(text: "\$${item.price}"))),
                           Container(
-                            // margin: EdgeInsets.only(bottom: 5),
-                            // padding: EdgeInsets.all(5),
+                            
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               color: AppColors.primaryAccent,

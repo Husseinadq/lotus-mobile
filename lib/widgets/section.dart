@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/popular_product_controller.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
-import 'package:lotus/widgets/big_text.dart';
-import 'package:lotus/widgets/product/product_card.dart';
+
+import '../pages/product/product_card.dart';
 
 class Section extends StatelessWidget {
   String title;

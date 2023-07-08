@@ -144,6 +144,7 @@ class ProfileScreen extends StatelessWidget {
               profileItem(Icons.language, "Language"),
               profileItem(Icons.notifications, "Notifications"),
               profileItem(Icons.help, "Help"),
+              profileItem(Icons.logout, "Log Out"),
               SizedBox(
                 height: Dimensions.height10,
               ),

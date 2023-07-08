@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lotus/controller/recommended_product_controller.dart';
 import 'package:lotus/pages/home/Main_shop_page.dart';
 import 'package:get/get.dart';
+import 'package:lotus/pages/splash/login/login_screen.dart';
+import 'package:lotus/pages/splash/splash_screen.dart';
 import 'package:lotus/routes/routes_helper.dart';
 import 'package:lotus/utils/colors.dart';
 import 'controller/popular_product_controller.dart';
@@ -26,9 +28,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MainShopPage(),
+      home: SplashScreen(),
       theme: ThemeData(primaryColor: Colors.amber),
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.getSplash(),
       getPages: RouteHelper.routes,
     );
   }

@@ -7,7 +7,8 @@ import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/floting_icon.dart';
 import 'package:lotus/widgets/small_text.dart';
 
-import '../add_to_cart_button.dart';
+import '../../widgets/add_to_cart_button.dart';
+
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key});

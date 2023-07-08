@@ -1,15 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:lotus/models/product_model.dart';
 
 import '../../utils/app_constants.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
-import '../big_text.dart';
-import '../card_footer.dart';
-import '../small_text.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/card_footer.dart';
+import '../../widgets/small_text.dart';
+
 
 class ProductListCard extends StatelessWidget {
   late ProductModel product;

@@ -8,12 +8,12 @@ import 'package:lotus/widgets/big_text.dart';
 import '../../widgets/app_bar/app_bar.dart';
 import '../product/product_cart_card.dart';
 
-class CartScreen extends StatelessWidget {
-  CartScreen({super.key});
+class WishlistScreen extends StatelessWidget {
+  const WishlistScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    Get.find<CartController>().getAllCartItems();
-    print(Get.find<CartController>().totalItems);
+    // Get.find<CartController>().getAllCartItems();
     return Scaffold(
       body: Container(
         child: Column(
@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
                     top: Dimensions.height20,
                   ),
                   child: Text(
-                    "My Cart",
+                    "My Wishlist",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: Dimensions.font20,
@@ -56,30 +56,10 @@ class CartScreen extends StatelessWidget {
                 // ProductCartCard()
               ],
             ),
-            Container(
-              margin: EdgeInsets.only(bottom: 12, left: 20, right: 20),
-              height: 50,
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.black),
-              child: Center(
-                  child: Get.find<CartController>().totalItem != 0
-                      ? BigText(
-                          text: "BUY " +
-                              "${Get.find<CartController>().totalItem}" +
-                              " ITEMS FOR \$" +
-                              "${1}",
-                          color: AppColors.primary,
-                        )
-                      : Center(
-                          child: CircularProgressIndicator(
-                              color: AppColors.primary),
-                        )),
-            )
+          
           ],
         ),
       ),
-      // bottomNavigationBar: NavigationBarWidget(index: 4 ,),
     );
   }
 }

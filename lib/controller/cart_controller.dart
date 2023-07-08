@@ -18,6 +18,8 @@ class CartController extends GetxController {
   Map<String, dynamic> _body = {};
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
+  bool isUpdateQuantity = false;
+  int totalItem = 0;
 
   Future<void> getAllCartItems() async {
     Response response = await cartRepo.getAllCartItems(_allCartItemsPost);
@@ -27,6 +29,8 @@ class CartController extends GetxController {
           .cartItems); //we bass the data after we format it and call get products method
 
       _isLoaded = true;
+      totalItems();
+
       update();
 
       ///like setStait
@@ -34,20 +38,31 @@ class CartController extends GetxController {
   }
 
   Future<void> updateItemQuantity(int id, bool mode) async {
-    _isLoaded = false;
+    // _isLoaded = false;
+    isUpdateQuantity = false;
     _body = {"id": id, "quantity": mode == true ? 1 : -1};
     Response response = await cartRepo.updateCartQuantity(_body);
-    if (response.statusCode == 200) {
+    if (response.body['status'] != false) {
+      // if(_cartItems.contains(id))
+      // print("secccccc");
+      // _cartItems.update(id, (value) {
+      //  containsKey
+
+      // });
       getAllCartItems();
+      // _isLoaded = true;
     }
   }
 
   Future<void> removeFromCart(int id) async {
     _isLoaded = false;
+    isUpdateQuantity = false;
+
     _body = {'id': id};
     Response response = await cartRepo.removFromCart(_body);
     if (response.statusCode == 200) {
       getAllCartItems();
+      // totalI = totalItems;
     }
   }
 
@@ -107,11 +122,25 @@ class CartController extends GetxController {
   //   return quantity;
   // }
 
-  // int get totalItems {
-  //   var totalQuantity = 0;
-  //   _items.forEach((key, value) {
-  //     totalQuantity += value.quantity!;
-  //   });
-  //   return totalQuantity;
-  // }
+  void totalItems() {
+    int totalQuantity = 0;
+    if (cartItems.isNotEmpty) {
+      cartItems.forEach((element) {
+        totalQuantity += element.quantity!;
+      });
+    }
+
+    totalItem = totalQuantity;
+    update();
+  }
+
+  double get totalPrice {
+    double totalPrice = 0;
+    _cartItems.forEach((element) {
+      totalPrice += ((element.price!) * (element.quantity!));
+    });
+    update();
+
+    return totalPrice;
+  }
 }
