@@ -2,12 +2,17 @@
 import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:lotus/controller/user_controller.dart';
 
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
+
+import '../../routes/routes_helper.dart';
 
 class SubmitButton extends StatelessWidget {
   SubmitButton(
@@ -28,10 +33,16 @@ class SubmitButton extends StatelessWidget {
         if (title == 'Login') {
           if (formKey.currentState!.validate()) {
 // post to server
-            print(editTextControllers['email']!.value.text);
-            print(editTextControllers['password']!.value.text);
+            String email = editTextControllers['email']!.value.text;
+            String password = editTextControllers['password']!.value.text;
 
-            
+            print(email);
+            print(password);
+            Get.find<UserController>().login(email, password).then((value) {
+              if (value) {
+                Get.toNamed(RouteHelper.getInitial());
+              }
+            });
           }
         } else {}
       }),

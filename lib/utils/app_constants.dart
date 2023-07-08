@@ -20,6 +20,16 @@ class AppConstants {
 
   static const String TOKEN = "DBToken";
 
+  //#### start user url route
+    static const String USER_LOG_IN = "/user/login";
+    static const String USER_SIGN_UP = "/user/sign-up";
+    static const String USER_LOG_OUT = "/user/logout";
+    static const String USER_PROFILE = "/user/profile";
+
+  //#### end user url route
+
+
+
   //#### start category url route
   static const String SINGLE_CATEGORY_URL = "/get-single-category/";
   static const String ALL_CATEGORY_URL = "/get-category";

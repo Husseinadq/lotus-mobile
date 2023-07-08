@@ -14,6 +14,7 @@ class RouteHelper {
   static const String onBoard = "/board";
   static const String login = "/login";
   static const String signup = "/signup";
+  static const String splash = "/splash";
 
   static const String initial = "/";
   static const String categories = "/categories";
@@ -25,8 +26,9 @@ class RouteHelper {
   static String getInBoard() => '$onBoard';
   static String getLogin() => '$login';
   static String getSignUp() => '$signup';
-
   static String getInitial() => '$initial';
+
+  static String  getSplash() => '$splash';
   static String getCategories() => '$categories';
   static String getOffers() => '$offers';
   static String getProfile(int index) => '$profile?index=$index';
@@ -36,6 +38,12 @@ class RouteHelper {
       '$productDetail?productId=$productId&pageNumber=2';
 
   static List<GetPage> routes = [
+
+    GetPage(
+        name: initial,
+        page: () {
+          return MainShopPage();
+        }),
     GetPage(
         name: getInBoard(),
         page: () {
@@ -50,12 +58,12 @@ class RouteHelper {
         name: getSignUp(),
         page: () {
           return SingUpScreen();
-        }),
-    GetPage(
-        name: initial,
+        }),  GetPage(
+        name: getSplash(),
         page: () {
           return SplashScreen();
         }),
+    
     GetPage(
         name: getCategories(),
         page: () {
@@ -85,5 +93,5 @@ class RouteHelper {
         }),
   ];
 
-  static getSplash() {}
+  // static getSplash() {}
 }
