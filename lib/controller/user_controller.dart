@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:lotus/data/repository/user_repo.dart';
 import 'package:lotus/models/user_model.dart';
 import 'package:lotus/routes/routes_helper.dart';
@@ -22,18 +21,13 @@ class UserController extends GetxController {
   User get getUser => _user;
   bool get isConfirm => _isConfirm;
 
-  Map<String, dynamic> _body = {};
 
   Future<bool> login(String emailOrmobile, String password) async {
     try {
       Response response = await userRepo
-          .login(_body = {"email": emailOrmobile, "password": password});
-
+          .login({"email": emailOrmobile, "password": password});
       if (response.statusCode == 200) {
-        print(response.body['message']);
         if (response.body['status']) {
-          print("object= " + 200.toString());
-
           _user = User(
               id: 0,
               firstName: response.body['usre']['first_name'],
@@ -43,7 +37,6 @@ class UserController extends GetxController {
               email: response.body['usre']['email'],
               token: response.body['usre']['token']);
           update();
-          //  return response.body['usre']['token'];
           return true;
         }
 
@@ -85,24 +78,13 @@ class UserController extends GetxController {
         "email": email,
         "password": password
       });
-      if (response.statusCode == 200) {
-        print(response.body['statusNumber']);
-        print("respons status =" + response.body['status'].toString());
-        print(response.body['usre']);
-        print(response.body['message']);
-        print(response.body['usre']['token']);
+      if (response.statusCode == 200) {     
         if (response.body['status']) {
-          print("object= " + 200.toString());
-
           _user.firstName = response.body['usre']['first_name'];
           _user.mobile = response.body['usre']['mobile'];
           _user.email = response.body['usre']['email'];
           _user.token = response.body['usre']['token'];
-
-          print("object after= " + 200.toString());
-
           update();
-          //sdf
           return true;
         }
         print("falllll");
@@ -113,6 +95,14 @@ class UserController extends GetxController {
     }
   }
 
+
+/// this function to save user token in the user phone 
+  Future<bool> saveUserToken(String token) async {
+    return false;
+  }
+
+
+/// this function to check if the user is logged in on signed up 
   bool isThereUser() {
     if (_user.email == "email") {
       return false;

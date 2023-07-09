@@ -11,9 +11,9 @@ import 'package:lotus/widgets/big_text.dart';
 import '../../models/cart_model.dart';
 
 // ignore: must_be_immutable
-class ProductCartCard extends StatelessWidget {
+class WishListCard extends StatelessWidget {
   CartItem item;
-  ProductCartCard({
+  WishListCard({
     Key? key,
     required this.item,
   }) : super(key: key);
@@ -101,46 +101,35 @@ class ProductCartCard extends StatelessWidget {
                         color: AppColors.secondryAccent,
                       ),
                     ),
-                    Container(
-                      // width: Dimensions.width200,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                              child: Container(
-                                  margin: EdgeInsets.only(left: 5),
-                                  child: BigText(text: "\$${item.price}"))),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: AppColors.primaryAccent,
-                            ),
-                            child: Row(
-                              children: [
-                                IconButton(
-                                    hoverColor: AppColors.primary,
-                                    onPressed: () {
-                                      Get.find<CartController>()
-                                          .updateItemQuantity(item.id!, false);
-                                    },
-                                    icon: Icon(Icons.remove)),
-                                Center(
-                                    child: Get.find<CartController>().isLoaded
-                                        ? BigText(
-                                            text: item.quantity.toString())
-                                        : CircularProgressIndicator(
-                                            color: AppColors.secondry,
-                                          )),
-                                IconButton(
-                                    onPressed: (() => Get.find<CartController>()
-                                        .updateItemQuantity(item.id!, true)),
-                                    icon: Icon(Icons.add)),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
+                    // Container(
+                    //   // width: Dimensions.width200,
+                    //   child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Expanded(
+                        //     child:
+                        Container(
+                            margin: EdgeInsets.only(left: 5),
+                            child: BigText(text: "\$${item.price}")),
+                        // ),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: AppColors.secondry,
+                          ),
+                          child: Text(
+                            "Add to Cart",
+                            style: TextStyle(
+                                color: AppColors.primary,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        )
+                      ],
+                    ),
+                    // )
                   ],
                 ),
               )

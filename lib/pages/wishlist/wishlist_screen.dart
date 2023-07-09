@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/cart_controller.dart';
+import 'package:lotus/pages/wishlist/wishlist_card.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';
@@ -43,7 +44,7 @@ class WishlistScreen extends StatelessWidget {
                       builder: ((cartController) => cartController.isLoaded
                           ? ListView.builder(
                               itemCount: cartController.cartItems.length,
-                              itemBuilder: (context, index) => ProductCartCard(
+                              itemBuilder: (context, index) => WishListCard(
                                     item: cartController.cartItems[index],
                                   ))
                           : Center(
@@ -56,7 +57,6 @@ class WishlistScreen extends StatelessWidget {
                 // ProductCartCard()
               ],
             ),
-          
           ],
         ),
       ),
