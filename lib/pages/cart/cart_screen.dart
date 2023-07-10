@@ -16,45 +16,47 @@ class CartScreen extends StatelessWidget {
     print(Get.find<CartController>().totalItems);
     return Scaffold(
       body: Container(
+        height: Dimensions.screenHeight,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppBarWidget(),
-                Container(
-                  margin: EdgeInsets.only(
-                    left: Dimensions.width10,
-                    bottom: Dimensions.height20,
-                    top: Dimensions.height20,
-                  ),
-                  child: Text(
-                    "My Cart",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: Dimensions.font20,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppBarWidget(),
+                  Container( height: 50,
+                    margin: EdgeInsets.only(
+                      left: Dimensions.width10,
+                      bottom: Dimensions.height20,
+                      top: Dimensions.height20,
+                    ),
+                    child: Text(
+                      "My Cart",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: Dimensions.font20,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  height: 400,
-                  child: GetBuilder<CartController>(
-                      builder: ((cartController) => cartController.isLoaded
-                          ? ListView.builder(
-                              itemCount: cartController.cartItems.length,
-                              itemBuilder: (context, index) => ProductCartCard(
-                                    item: cartController.cartItems[index],
-                                  ))
-                          : Center(
-                              child: CircularProgressIndicator(
-                                  color: AppColors.secondry),
-                            ))),
-                )
+                  Expanded(
+                    child: GetBuilder<CartController>(
+                        builder: ((cartController) => cartController.isLoaded
+                            ? ListView.builder(
+                                itemCount: cartController.cartItems.length,
+                                itemBuilder: (context, index) => ProductCartCard(
+                                      item: cartController.cartItems[index],
+                                    ))
+                            : Center(
+                                child: CircularProgressIndicator(
+                                    color: AppColors.secondry),
+                              ))),
+                  )
 
-                // ProductCartCard(),
-                // ProductCartCard()
-              ],
+                  // ProductCartCard(),
+                  // ProductCartCard()
+                ],
+              ),
             ),
             Container(
               margin: EdgeInsets.only(bottom: 12, left: 20, right: 20),

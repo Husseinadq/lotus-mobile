@@ -37,6 +37,26 @@ class CartController extends GetxController {
     }
   }
 
+
+  Future<void> addToCart(userId,productId,quantity) async {
+    Response response = await cartRepo.addToCart({
+      "user":userId,
+      "product_id":productId,
+      "quantity": quantity
+    });
+    if (response.statusCode == 200) {
+      print(response.body);
+      if(response.body['status']==true){
+        _cartItems.add(CartModel.fromJson(response.body).cartItems[0]);
+        _isLoaded = true;
+        update();
+      }
+      // TODO: error handel if it dose not added
+    }
+    /// TODO error handel if it dose not go will
+
+  }
+
   Future<void> updateItemQuantity(int id, bool mode) async {
     // _isLoaded = false;
     isUpdateQuantity = false;

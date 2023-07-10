@@ -1,44 +1,37 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:lotus/models/cart_model.dart';
 
 import '../../utils/app_constants.dart';
 import '../api/api_clint.dart';
 
-class CartRepo {
+class WishlistRepo {
   final ApiClient apiClient;
-  CartRepo({
+  WishlistRepo({
     required this.apiClient,
   });
-  Future<Response> getAllCartItems(Map<String, dynamic> data) async {
+  Future<Response> getAllWishlistItems(Map<String, dynamic> data) async {
     return await apiClient.postData(
         AppConstants.API_V +
-            AppConstants.ALL_CART_ITEMS +
+            AppConstants.ALL_WISHLIST_ITEMS +
             AppConstants.KEY +
             AppConstants.LANG,
         data); //we bass as url the end point
-  }
-  Future<Response> addToCart(Map<String, dynamic> data) async {
-    return await apiClient.postData(
-        AppConstants.API_V +
-            AppConstants.ADD_TO_CART +
-            AppConstants.KEY +
-            AppConstants.LANG,
-        data); //we bass as url the end point
-  }
-  Future<Response> updateCartQuantity(Map<String, dynamic> data) async {
-    return await apiClient.postData(
-        AppConstants.API_V +
-            AppConstants.UPDATE_CART +
-            AppConstants.KEY +
-            AppConstants.LANG,
-        data); //we bass as url the end point removFromCart
   }
 
-  Future<Response> removFromCart(Map<String, dynamic> data) async {
+
+
+  Future<Response> addToWishlist(Map<String, dynamic> data) async {
     return await apiClient.postData(
         AppConstants.API_V +
-            AppConstants.REMOVE_CART_ITEM +
+            AppConstants.ADD_TO_WISHLIST +
+            AppConstants.KEY +
+            AppConstants.LANG,
+        data); //we bass as url the end point
+  }
+  Future<Response> removFromWishlist(Map<String, dynamic> data) async {
+    return await apiClient.postData(
+        AppConstants.API_V +
+            AppConstants.REMOVE_WISHLIST_ITEM +
             AppConstants.KEY +
             AppConstants.LANG,
         data); //we bass as url the end point

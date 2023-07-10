@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/cart_controller.dart';
 import 'package:lotus/controller/user_controller.dart';
+import 'package:lotus/controller/wishlist_controller.dart';
 import 'package:lotus/routes/routes_helper.dart';
 import 'package:lotus/utils/colors.dart';
 
@@ -16,6 +17,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<UserController>().initialized;
     Get.find<CartController>().initialized;
+    Get.find<WishlistController>().initialized;
     Timer(const Duration(milliseconds: 1000), () {
       Get.toNamed(RouteHelper.getMainPage());
     });

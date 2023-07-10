@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/cart_controller.dart';
+import 'package:lotus/controller/wishlist_controller.dart';
+import 'package:lotus/models/wishlist_model.dart';
 
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
@@ -12,7 +14,7 @@ import '../../models/cart_model.dart';
 
 // ignore: must_be_immutable
 class WishListCard extends StatelessWidget {
-  CartItem item;
+  WishlistItem item;
   WishListCard({
     Key? key,
     required this.item,
@@ -54,7 +56,7 @@ class WishListCard extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Get.find<CartController>().removeFromCart(item.id!);
+              Get.find<WishlistController>().removeFromWishlist(item.id!);
             },
             child: Container(
               padding: EdgeInsets.symmetric(
@@ -86,7 +88,7 @@ class WishListCard extends StatelessWidget {
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(Dimensions.radius20)),
                   child: Image.network(
-                    item.imageUrl.toString(),
+                    item.productImage.toString(),
                     fit: BoxFit.scaleDown,
                   )),
               Expanded(
@@ -113,18 +115,22 @@ class WishListCard extends StatelessWidget {
                             margin: EdgeInsets.only(left: 5),
                             child: BigText(text: "\$${item.price}")),
                         // ),
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: AppColors.secondry,
-                          ),
-                          child: Text(
-                            "Add to Cart",
-                            style: TextStyle(
-                                color: AppColors.primary,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
+                        GestureDetector( onTap: (){
+                          Get.find<CartController>().addToCart(1, 4, 1);
+                        },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: AppColors.secondry,
+                            ),
+                            child: Text(
+                              "Add to Cart",
+                              style: TextStyle(
+                                  color: AppColors.primary,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500),
+                            ),
                           ),
                         )
                       ],

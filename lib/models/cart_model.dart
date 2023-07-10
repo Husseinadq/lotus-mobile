@@ -68,7 +68,7 @@ class CartItem {
       id: json['id'],
       productId: json['product_id'],
       cartId: json['cart_id'],
-      price:json['price'],
+      price:double.parse( json['price'].toString()),
       quantity: json['quantity'],imageUrl: json['imageUrl'],productName: json['productName'],
     );
   }

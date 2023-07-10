@@ -35,8 +35,14 @@ class AppConstants {
   static const String ALL_CART_ITEMS = "/post-cart-items";
   static const String ADD_TO_CART = "/post-add-to-cart";
   static const String UPDATE_CART = "/post-update-cart-item";
-  static const String REMOVE_ITEM = "/post-delete-cart-item";
+  static const String REMOVE_CART_ITEM = "/post-delete-cart-item";
   //#### end cart url route
+
+  //#### start wishlist url route
+  static const String ALL_WISHLIST_ITEMS = "/post-wishlist-items";
+  static const String ADD_TO_WISHLIST = "/post-add-to-wishlist";
+  static const String REMOVE_WISHLIST_ITEM = "/post-delete-wihslist-item";
+  //#### end wishlist url route
 
   /// start google slidable bottum nav
   static int PAGENUMBER = 0;
