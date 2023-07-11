@@ -12,7 +12,7 @@ class PopularProductController extends GetxController {
   });
   late CartController _cart;
 
-  List<ProductModel> _popularProductList = [];
+  List<Product> _popularProductList = [];
   bool _isLoaded = false;
   int _quantity = 0;
   int _inCartItems = 0;
@@ -21,13 +21,13 @@ class PopularProductController extends GetxController {
 
   int get quantity => _quantity;
   bool get isLoaded => _isLoaded;
-  List<ProductModel> get popularProductList =>
+  List<Product> get popularProductList =>
       _popularProductList; //return the list of product to the UI
 
   int get inCardItems => _inCartItems + _quantity;
 
-  ProductModel findById(int id) {
-    late ProductModel product;
+  Product findById(int id) {
+    late Product product;
     popularProductList.forEach(
       (element) {
         if (element.id == id) {
@@ -42,9 +42,10 @@ class PopularProductController extends GetxController {
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepo.getPopularProductRepoList();
     if (response.statusCode == 200) {
+      print(response.body);
       _popularProductList = [];
-      _popularProductList.addAll(Products.fromJson(response.body)
-          .products); //we bass the data after we format it and call get products method
+      _popularProductList.addAll(ProductsModel.fromJson(response.body).items
+          ); //we bass the data after we format it and call get products method
     
       _isLoaded = true;
       update();
@@ -78,18 +79,18 @@ class PopularProductController extends GetxController {
     }
   }
 
-  void initProduct(CartController cart, ProductModel product) {
-    _quantity = 0;
-    _inCartItems = 0;
-    _cart = cart;
-    var exist = false;
-    // exist = cart.existInCart(product);
-    if (exist) {
-      // _inCartItems = _cart.getQuantity(product);
-    }
-  }
+  // void initProduct(CartController cart, Product product) {
+  //   _quantity = 0;
+  //   _inCartItems = 0;
+  //   _cart = cart;
+  //   var exist = false;
+  //   // exist = cart.existInCart(product);
+  //   if (exist) {
+  //     // _inCartItems = _cart.getQuantity(product);
+  //   }
+  // }
 
-  void addItem(ProductModel product) {
+  void addItem(Product product) {
     // if (quantity > 0) {
 
     // _cart.addItem(product, _quantity);

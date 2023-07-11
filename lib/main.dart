@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lotus/controller/product_controller.dart';
 import 'package:lotus/controller/recommended_product_controller.dart';
 import 'package:lotus/controller/user_controller.dart';
 import 'package:lotus/pages/home/Main_shop_page.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
+    Get.find<ProductController>().getAllProducts();
     Get.find<RecommendedProductController>().getRecommendedProductList();
 
     return GetMaterialApp(

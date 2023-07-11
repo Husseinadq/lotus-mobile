@@ -11,12 +11,12 @@ class RecommendedProductController extends GetxController {
     required this.recommendedProductRepo,
   });
 
-  List<ProductModel> _recommendedProductList = [];
+  List<Product> _recommendedProductList = [];
   bool _isLoaded = false;
 
 // ##### start get ####
   bool get isLoaded => _isLoaded;
-  List<ProductModel> get recommendedProductList =>
+  List<Product> get recommendedProductList =>
       _recommendedProductList; //return the list of product to the UI
 
 // ##### end get ####
@@ -27,8 +27,8 @@ class RecommendedProductController extends GetxController {
     if (response.statusCode == 200) {
       print("object 200");
       _recommendedProductList = [];
-      _recommendedProductList.addAll(Products.fromJson(response.body)
-          .products); //we bass the data after we format it and call get products method
+      _recommendedProductList.addAll(ProductsModel.fromJson(response.body)
+          .items); //we bass the data after we format it and call get products method
       _isLoaded = true;
       update();
 

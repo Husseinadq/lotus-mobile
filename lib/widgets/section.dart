@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/popular_product_controller.dart';
+import 'package:lotus/controller/product_controller.dart';
+import 'package:lotus/models/product_model.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 
@@ -8,7 +10,8 @@ import '../pages/product/product_card.dart';
 
 class Section extends StatelessWidget {
   String title;
-  Section({super.key, required this.title});
+  List<Product> items;
+  Section({super.key, required this.title ,required this.items} );
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +49,13 @@ class Section extends StatelessWidget {
               )),
           Container(
             height: Dimensions.height300,
-            child: GetBuilder<PopularProductController>(
-                builder: (productController) => ListView.builder(
+            child: ListView.builder(
+                  itemCount: items.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: ((context, index) {
-                      return ProductCard();
+                      return ProductCard(product: items[index],);
                     }))),
-          )
+
         ],
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:lotus/controller/cart_controller.dart';
+import 'package:lotus/models/product_model.dart';
 import 'package:lotus/routes/routes_helper.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
@@ -10,9 +12,9 @@ import 'package:lotus/widgets/small_text.dart';
 import '../../controller/wishlist_controller.dart';
 import '../../widgets/add_to_cart_button.dart';
 
-
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final Product product;
+  ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +32,20 @@ class ProductCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(Dimensions.radius15)),
         child: Column(children: [
           Stack(children: [
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   height: Dimensions.height15,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Colors.black,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(Dimensions.radius5),
                           bottomRight: Radius.circular(Dimensions.radius5),
                           topLeft: Radius.circular(Dimensions.radius5),
                           topRight: Radius.circular(Dimensions.radius5))),
-                  child:
-                      SmallText(text: "must sell", color: AppColors.primary),
+                  child: SmallText(text: "must sell", color: AppColors.primary),
                 ),
                 Positioned(
                   top: 3,
@@ -62,11 +64,12 @@ class ProductCard extends StatelessWidget {
                 margin: EdgeInsets.only(
                     left: Dimensions.width5,
                     right: Dimensions.width5,
-                    top: Dimensions.height10),
+                    top: Dimensions.height30),
                 decoration: BoxDecoration(
+                  color: AppColors.lightgrey,
                     image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: AssetImage("assets/images/1.png"))),
+                        image: NetworkImage(product.productImage!))),
               ),
             )
           ]),
@@ -76,10 +79,8 @@ class ProductCard extends StatelessWidget {
                 SizedBox(
                   height: Dimensions.height10,
                 ),
-                Text(
-                    "Flutter app and the product card and the product card and the product card",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis),
+                Text(product.name.toString(),
+                    maxLines: 2, overflow: TextOverflow.ellipsis),
                 SizedBox(
                   height: Dimensions.height10,
                 ),
@@ -93,7 +94,7 @@ class ProductCard extends StatelessWidget {
                           fontSize: Dimensions.font15),
                     ),
                     Text(
-                      "4,949.00",
+                      product.price.toString(),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: Dimensions.font15),
@@ -134,15 +135,13 @@ class ProductCard extends StatelessWidget {
                 //     ),
                 //   ],
                 // ),
-                GestureDetector(onTap: (){
-                  Get.find<WishlistController>().addToWishlist(1, 1, 5);
-                  print("tap on add to cart");
-
-                },
+                GestureDetector(
+                  onTap: () {
+                    Get.find<CartController>().addToCart(1, 1, product.id);
+                    print("tap on add to cart "+product.id.toString());
+                  },
                   child: AddToCartButton(
-                    width: Dimensions.width120,
-                    height:Dimensions.height50
-                  ),
+                      width: Dimensions.width120, height: Dimensions.height50),
                 )
                 // Row(
                 //   children: [

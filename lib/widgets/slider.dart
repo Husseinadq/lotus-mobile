@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lotus/controller/product_controller.dart';
 
 import '../controller/popular_product_controller.dart';
 import '../models/product_model.dart';
@@ -44,20 +45,19 @@ class _SliderWidgetState extends State<SliderWidget> {
     return Column(
       children: [
         //########## Strat home pages slider  ##########//
-        GetBuilder<PopularProductController>(builder: ((popularProducts) {
-          return Container(
+         Container(
               child: Column(
             children: [
               //########## Strat pages slider  ##########//
               Container(
                 height: Dimensions.pageView,
-                child: popularProducts.isLoaded
+                child: Get.find<ProductController>().isLoaded
                     ? PageView.builder(
                         controller: pageController,
-                        itemCount: popularProducts.popularProductList.length,
+                        itemCount: Get.find<ProductController>().products.length,
                         itemBuilder: (context, index) {
                           return _bodyPageItem(
-                              index, popularProducts.popularProductList[index]);
+                              index, Get.find<ProductController>().products[index]);
                         })
                     : Center(
                         child:
@@ -66,15 +66,16 @@ class _SliderWidgetState extends State<SliderWidget> {
               ),
               //########## End pages slider ##########//
             ],
-          ));
-        })),
+          )
+              )
+
         //########## Strat dots under the slider ##########//
         //########## End dots under the slider ##########//
       ],
     );
   }
 
-  Widget _bodyPageItem(int index, ProductModel product) {
+  Widget _bodyPageItem(int index, Product product) {
     Matrix4 matrix = Matrix4.identity();
     if (index == _currPageValue.floor()) {
       var currScale = 1 - (_currPageValue - index) * (1 - _scaleFactor);
@@ -106,7 +107,7 @@ class _SliderWidgetState extends State<SliderWidget> {
         children: [
           GestureDetector(
             onTap: (() {
-              Get.toNamed(RouteHelper.getProductDetail(product.id!));
+              // Get.toNamed(RouteHelper.getProductDetail(product.id!));
             }),
             child: Container(
               height: Dimensions.pageViewContainer,
@@ -117,19 +118,19 @@ class _SliderWidgetState extends State<SliderWidget> {
                   color: AppColors.third,
                   image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(
                       /* AppConstants.BASE_URL + "/uploads/" + product.img!*/
-                      product.img.toString()))),
+                      product.productImage.toString()))),
             ),
           ),
 
           //########## Strat dots under the slider ##########//
           Align(
             alignment: Alignment.bottomCenter,
-            child: GetBuilder<PopularProductController>(
-              builder: ((popularProducts) {
+            child: GetBuilder<ProductController>(
+              builder: ((productController) {
                 return DotsIndicator(
-                  dotsCount: popularProducts.popularProductList.isEmpty
+                  dotsCount: productController.products.isEmpty
                       ? 1
-                      : popularProducts.popularProductList.length,
+                      : productController.products.length,
                   position: _currPageValue,
                   decorator: DotsDecorator(
                     color: AppColors.thirdAccent,

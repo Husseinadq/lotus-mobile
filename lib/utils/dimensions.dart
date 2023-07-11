@@ -7,8 +7,8 @@ class Dimensions {
   //screenHeigt=759.0 / the item normal size size
   //screenWidth=360.0
 
-  static double pageView = screenHeight / (screenHeight / 200);
-  static double pageViewContainer = screenHeight / (screenWidth / 300);
+  static double pageView = screenHeight / (screenHeight / 180);
+  static double pageViewContainer = screenHeight / (screenWidth / 200);
   static double pageViewTextContainer = screenHeight / 7.03;
 
   //############  Start  Size  ############//
@@ -124,7 +124,7 @@ class Dimensions {
 //############  Start Icons Size  ############//
 
 //############  Start  Category Slider  ############//Section
-  static double categorySliderHeigt = screenHeight / (screenHeight / 100);
+  static double categorySliderHeigt = screenHeight / (screenHeight / 180);
 //############  Start  Category Slider  ############//
 
 //############  Start  Category Slider  ############//Section

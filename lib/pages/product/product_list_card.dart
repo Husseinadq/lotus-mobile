@@ -10,7 +10,7 @@ import '../../widgets/small_text.dart';
 
 
 class ProductListCard extends StatelessWidget {
-  late ProductModel product;
+  late Product product;
    ProductListCard({super.key, required this.product});
 
   @override
@@ -31,7 +31,7 @@ class ProductListCard extends StatelessWidget {
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                        AppConstants.BASE_URL + "/uploads/" + product.img!))),
+                        AppConstants.BASE_URL + "/uploads/" + product.productImage!))),
           ),
           Expanded(
             child: Container(

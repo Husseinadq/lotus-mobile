@@ -16,14 +16,19 @@ class CategoryListView extends StatelessWidget {
     return Container(
         height: Dimensions.categorySliderHeigt,
         width: double.maxFinite,
-        color: AppColors.primaryAccent,
+        color: AppColors.primary,
         child: GetBuilder<CategoryController>(
-          builder: (categoriesController) => ListView.builder(
+          builder: (categoriesController) => GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 15,mainAxisSpacing: 10
+              ),
               scrollDirection: Axis.horizontal,
               itemCount: categoriesController.allCategoriesList.length,
               itemBuilder: ((context, index) {
-                return Container(
-                  padding: EdgeInsets.all(10),
+                return Container(margin: EdgeInsets.only(top: 5),
                   height: Dimensions.height90,
                   width: Dimensions.height90,
                   child: Column(
@@ -33,16 +38,18 @@ class CategoryListView extends StatelessWidget {
                       Expanded(
                         child: CircleAvatar(
                           radius: Dimensions.radius35,
-                          backgroundColor: AppColors.grey,
+                          backgroundColor: AppColors.grey,child: Image.asset('assets/images/2.png'),
                         ),
                       ),
-                      Text(
-                        categoriesController.allCategoriesList[index].name!,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: AppColors.secondry,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14),
+                      Container(margin: EdgeInsets.only(top: 5),
+                        child: Text(
+                          categoriesController.allCategoriesList[index].name!,
+                          overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: AppColors.secondry,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13),
+                        ),
                       )
                     ],
                   ),

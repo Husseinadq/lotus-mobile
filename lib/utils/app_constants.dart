@@ -26,10 +26,15 @@ class AppConstants {
 
   //#### end user url route
 
-  //#### start category url route
-  static const String SINGLE_CATEGORY_URL = "/get-single-category/";
-  static const String ALL_CATEGORY_URL = "/get-category";
-  //#### end category url route
+  //#### start product url route
+  // static const String SINGLE_CATEGORY_URL = "/get-single-category/";
+  static const String ALL_PRODUCT = "/get-products";
+  //#### end product url route
+
+  // #### start category url route
+    static const String SINGLE_CATEGORY_URL = "/get-single-category/";
+    static const String ALL_CATEGORY_URL = "/get-category";
+    //#### end category url route
 
   //#### start cart url route
   static const String ALL_CART_ITEMS = "/post-cart-items";
