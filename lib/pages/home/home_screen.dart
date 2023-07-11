@@ -29,16 +29,21 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    const CategoryListView(),
+                    CategoryListView(),
                     // Section(title: 'New'),
                     GetBuilder<ProductController>(
                         builder: (productController) => Section(
-                              title: 'New',
+                              title: 'Recommended',
                               items: productController.products,
                             )),
                     GetBuilder<ProductController>(
                         builder: (productController) => Section(
-                              title: 'Old',
+                              title: 'Previously browesed',
+                              items: productController.products,
+                            )),
+                    GetBuilder<ProductController>(
+                        builder: (productController) => Section(
+                              title: 'Trending deals',
                               items: productController.products,
                             )),
                   ],

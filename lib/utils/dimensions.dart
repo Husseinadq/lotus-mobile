@@ -62,10 +62,12 @@ class Dimensions {
   static double height60 = screenHeight / (screenHeight / 60);
   static double height75 = screenHeight / (screenHeight / 75);
   static double height90 = screenHeight / (screenHeight / 90);
+  static double height95 = screenHeight / (screenHeight / 95);
   static double height100 = screenHeight / (screenHeight / 100);
   static double height120 = screenHeight / (screenHeight / 120);
   static double height130 = screenHeight / (screenHeight / 130);
   static double height150 = screenHeight / (screenHeight / 150);
+  static double height180 = screenHeight / (screenHeight / 150);
   static double height250 = screenHeight / (screenHeight / 250);
   static double height200 = screenHeight / (screenHeight / 200);
   static double height300 = screenHeight / (screenHeight / 300);
@@ -124,7 +126,7 @@ class Dimensions {
 //############  Start Icons Size  ############//
 
 //############  Start  Category Slider  ############//Section
-  static double categorySliderHeigt = screenHeight / (screenHeight / 180);
+  static double categorySliderHeigt = screenHeight / (screenHeight / 200);
 //############  Start  Category Slider  ############//
 
 //############  Start  Category Slider  ############//Section

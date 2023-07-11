@@ -13,10 +13,10 @@ class CartModel {
     required message,
     required cardItems,
   }) {
-    this._status = status;
-    this._errorNumber = errorNumber;
-    this._message = message;
-    this._cardItems = cardItems;
+    _status = status;
+   _errorNumber = errorNumber;
+   _message = message;
+    _cardItems = cardItems;
   }
   // Map<String, dynamic> toMap() {
   //   return <String, dynamic>{

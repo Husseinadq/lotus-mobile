@@ -9,13 +9,12 @@ import '../../widgets/app_bar/app_bar.dart';
 import '../product/product_cart_card.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen({super.key});
+ const CartScreen({super.key});
   @override
   Widget build(BuildContext context) {
     Get.find<CartController>().getAllCartItems();
-    print(Get.find<CartController>().totalItems);
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: Dimensions.screenHeight,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

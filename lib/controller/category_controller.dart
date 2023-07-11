@@ -21,12 +21,6 @@ class CategoryController extends GetxController {
     if (response.statusCode == 200) {
       _singleCategoryList = [];
       _singleCategoryList.addAll(Categories.fromJson(response.body).categories);
-      singleCategoryList.forEach(
-        (element) {
-          print(element.id);
-          print(element.name);
-        } ,
-      );
       update();
     }
   }
@@ -36,13 +30,6 @@ class CategoryController extends GetxController {
     if (response.statusCode == 200) {
       _allCategoriesList = [];
       _allCategoriesList.addAll(Categories.fromJson(response.body).categories);
-      _allCategoriesList.forEach(
-        (element) {
-          print(element.id);
-                    print(element.name);
-
-        },
-      );
       update();
     }
   }

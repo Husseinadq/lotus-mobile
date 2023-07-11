@@ -45,29 +45,27 @@ class _SliderWidgetState extends State<SliderWidget> {
     return Column(
       children: [
         //########## Strat home pages slider  ##########//
-         Container(
-              child: Column(
-            children: [
-              //########## Strat pages slider  ##########//
-              Container(
-                height: Dimensions.pageView,
-                child: Get.find<ProductController>().isLoaded
-                    ? PageView.builder(
-                        controller: pageController,
-                        itemCount: Get.find<ProductController>().products.length,
-                        itemBuilder: (context, index) {
-                          return _bodyPageItem(
-                              index, Get.find<ProductController>().products[index]);
-                        })
-                    : Center(
-                        child:
-                            CircularProgressIndicator(color: AppColors.third),
-                      ),
-              ),
-              //########## End pages slider ##########//
-            ],
-          )
-              )
+        Container(
+            child: Column(
+          children: [
+            //########## Strat pages slider  ##########//
+            Container(
+              height: Dimensions.pageView,
+              child: Get.find<ProductController>().isLoaded
+                  ? PageView.builder(
+                      controller: pageController,
+                      itemCount: Get.find<ProductController>().products.length,
+                      itemBuilder: (context, index) {
+                        return _bodyPageItem(index,
+                            Get.find<ProductController>().products[index]);
+                      })
+                  : Center(
+                      child: CircularProgressIndicator(color: AppColors.third),
+                    ),
+            ),
+            //########## End pages slider ##########//
+          ],
+        ))
 
         //########## Strat dots under the slider ##########//
         //########## End dots under the slider ##########//

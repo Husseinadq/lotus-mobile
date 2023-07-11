@@ -2,7 +2,6 @@
 import 'package:get/get.dart';
 
 import 'package:lotus/data/repository/cart_repo.dart';
-import 'package:lotus/models/product_model.dart';
 
 import '../models/cart_model.dart';
 

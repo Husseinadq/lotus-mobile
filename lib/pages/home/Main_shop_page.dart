@@ -2,6 +2,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lotus/controller/cart_controller.dart';
+import 'package:lotus/controller/wishlist_controller.dart';
 
 import 'package:lotus/pages/cart/cart_screen.dart';
 import 'package:lotus/pages/home/home_screen.dart';
@@ -52,15 +54,46 @@ class _MainShopPageState extends State<MainShopPage> {
               size: 30,
               color: AppColors.primary,
             ),
-            Icon(
-              Icons.shopping_cart,
-              size: 30,
-              color: AppColors.primary,
+            Stack(
+              children: [
+                Icon(
+                  Icons.shopping_cart,
+                  size: 30,
+                  color: AppColors.primary,
+                ),
+                Get.find<CartController>().totalItem > 0
+                    ? Positioned(
+                        right: 8,
+                        top: 4,
+                        child: Center(
+                            child: Text(
+                          Get.find<CartController>().totalItem.toString(),
+                          style: TextStyle(
+                              color: AppColors.secondry,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                        )))
+                    : Positioned(right: 0, top: 0, child: Text("")),
+              ],
             ),
-            Icon(
-              Icons.favorite,
-              size: 30,
-              color: AppColors.primary,
+            Stack(
+              children: [Icon(
+                Icons.favorite,
+                size: 30,
+                color: AppColors.primary,
+              ),Get.find<WishlistController>().wishlistItems.length > 0
+                    ? Positioned(
+                        right: 10,
+                        top: 6,
+                        child: Center(
+                            child: Text(
+                          Get.find<WishlistController>().wishlistItems.length.toString(),
+                          style: TextStyle(
+                              color: AppColors.secondry,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                        )))
+                    : Positioned(right: 0, top: 0, child: Text("")),]
             ),
             Icon(
               Icons.person,

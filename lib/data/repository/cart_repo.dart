@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:lotus/models/cart_model.dart';
 
 import '../../utils/app_constants.dart';
 import '../api/api_clint.dart';

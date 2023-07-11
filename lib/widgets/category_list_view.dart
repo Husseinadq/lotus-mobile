@@ -4,11 +4,35 @@ import 'package:lotus/controller/category_controller.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';
+import 'package:scroll_indicator/scroll_indicator.dart';
 
 import '../controller/popular_product_controller.dart';
 
-class CategoryListView extends StatelessWidget {
-  const CategoryListView({super.key});
+class CategoryListView extends StatefulWidget {
+  CategoryListView({super.key});
+
+  @override
+  State<CategoryListView> createState() => _CategoryListViewState();
+}
+
+class _CategoryListViewState extends State<CategoryListView> {
+  ScrollController scrollController = ScrollController();
+
+  double pixels = 0.0;
+
+  @override
+  void initState() {
+    scrollController = ScrollController();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,44 +41,75 @@ class CategoryListView extends StatelessWidget {
         height: Dimensions.categorySliderHeigt,
         width: double.maxFinite,
         color: AppColors.primary,
-        child: GetBuilder<CategoryController>(
-          builder: (categoriesController) => GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,mainAxisSpacing: 10
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: Dimensions.height180,
+              child: GetBuilder<CategoryController>(
+                builder: (categoriesController) => GridView.builder(
+                    controller: scrollController,
+                    // physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: false,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 0),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 20,
+                    // categoriesController.allCategoriesList.length,
+                    itemBuilder: ((context, index) {
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 1, top: 5),
+                        height: Dimensions.height90,
+                        // width: Dimensions.height5,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: CircleAvatar(
+                                radius: Dimensions.radius35,
+                                backgroundColor: AppColors.grey,
+                                child: Image.asset('assets/images/2.png'),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 5),
+                              child: Text(
+                                "Test",
+                                // categoriesController
+                                //     .allCategoriesList[index].name!,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: AppColors.secondry,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    })),
               ),
-              scrollDirection: Axis.horizontal,
-              itemCount: categoriesController.allCategoriesList.length,
-              itemBuilder: ((context, index) {
-                return Container(margin: EdgeInsets.only(top: 5),
-                  height: Dimensions.height90,
-                  width: Dimensions.height90,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: CircleAvatar(
-                          radius: Dimensions.radius35,
-                          backgroundColor: AppColors.grey,child: Image.asset('assets/images/2.png'),
-                        ),
-                      ),
-                      Container(margin: EdgeInsets.only(top: 5),
-                        child: Text(
-                          categoriesController.allCategoriesList[index].name!,
-                          overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: AppColors.secondry,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 13),
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              })),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 5),
+              child: ScrollIndicator(
+                scrollController: scrollController,
+                width: Dimensions.width40,
+                height: Dimensions.height5,
+                indicatorWidth: Dimensions.width20,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColors.lightgrey),
+                indicatorDecoration: BoxDecoration(
+                    color: AppColors.secondry,
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+            )
+          ],
         ));
   }
 }

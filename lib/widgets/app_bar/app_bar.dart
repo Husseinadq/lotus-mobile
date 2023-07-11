@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../big_text.dart';
-import '../search_widget.dart';
+import '../../pages/search/search_widget.dart';
 import '../small_text.dart';
 import 'app_bar_search.dart';
 

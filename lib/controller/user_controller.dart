@@ -51,7 +51,6 @@ class UserController extends GetxController {
 
   Future<void> logOut() async {
     try {
-      print(getUser.token);
       Response response = await userRepo.logOut({"token": getUser.token});
       if (response.statusCode == 200) {
         if (response.body['errorNumber'] == 'S001') {

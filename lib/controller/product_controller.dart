@@ -1,10 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get.dart';
 import 'package:lotus/data/repository/product_repo.dart';
-import 'package:lotus/data/repository/wishlist_repo.dart';
-import 'package:lotus/models/api_respons.dart';
-import 'package:lotus/models/wishlist_model.dart';
-import '../models/cart_model.dart';
 import '../models/product_model.dart';
 
 class ProductController extends GetxController {
