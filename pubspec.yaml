@@ -43,6 +43,8 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   flutter_slidable: ^2.0.0
   scroll_indicator: ^0.0.3
+  carousel_pro: ^1.0.0
+  carousel_pro_nullsafety: ^1.0.2
   
 
 dev_dependencies:

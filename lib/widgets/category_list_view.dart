@@ -44,6 +44,9 @@ class _CategoryListViewState extends State<CategoryListView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            SizedBox(
+              height: 5,
+            ),
             Container(
               height: Dimensions.height180,
               child: GetBuilder<CategoryController>(
@@ -53,14 +56,14 @@ class _CategoryListViewState extends State<CategoryListView> {
                     shrinkWrap: false,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        crossAxisSpacing: 5,
+                        crossAxisSpacing: 0,
                         mainAxisSpacing: 0),
                     scrollDirection: Axis.horizontal,
                     itemCount: 20,
                     // categoriesController.allCategoriesList.length,
                     itemBuilder: ((context, index) {
                       return Container(
-                        margin: EdgeInsets.only(bottom: 1, top: 5),
+                        margin: EdgeInsets.only(bottom: 1, top: 0),
                         height: Dimensions.height90,
                         // width: Dimensions.height5,
                         child: Column(
@@ -95,11 +98,11 @@ class _CategoryListViewState extends State<CategoryListView> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: 5),
+              padding: EdgeInsets.only(bottom: 5),
               child: ScrollIndicator(
                 scrollController: scrollController,
                 width: Dimensions.width40,
-                height: Dimensions.height5,
+                height: 5,
                 indicatorWidth: Dimensions.width20,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
