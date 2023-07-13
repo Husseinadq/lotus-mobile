@@ -52,57 +52,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Container(
-          width: 200,
-          height: 40,
-          decoration: BoxDecoration(
-              color: AppColors.secondry,
-              borderRadius: BorderRadius.circular(20)),
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Sort",
-                        style:
-                            TextStyle(color: AppColors.primary, fontSize: 20),
-                      ),
-// SizedBox(width: 10,),
-                      Icon(
-                        Icons.filter,
-                        color: AppColors.primary,
-                      )
-                    ],
-                  ),
-                ),
-                VerticalDivider(color: AppColors.primary),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Filter",
-                        style:
-                            TextStyle(color: AppColors.primary, fontSize: 20),
-                      ),
-                      // SizedBox(width: 10,),
-
-                      Icon(
-                        Icons.filter_alt_outlined,
-                        color: AppColors.primary,
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ));
+       
+        );
   }
 }

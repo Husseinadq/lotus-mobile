@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:lotus/data/repository/user_repo.dart';
+import 'package:lotus/helper/dialogs.dart';
 import 'package:lotus/models/user_model.dart';
 import 'package:lotus/routes/routes_helper.dart';
 
@@ -21,11 +22,10 @@ class UserController extends GetxController {
   User get getUser => _user;
   bool get isConfirm => _isConfirm;
 
-
   Future<bool> login(String emailOrmobile, String password) async {
     try {
-      Response response = await userRepo
-          .login({"email": emailOrmobile, "password": password});
+      Response response =
+          await userRepo.login({"email": emailOrmobile, "password": password});
       if (response.statusCode == 200) {
         if (response.body['status']) {
           _user = User(
@@ -77,7 +77,7 @@ class UserController extends GetxController {
         "email": email,
         "password": password
       });
-      if (response.statusCode == 200) {     
+      if (response.statusCode == 200) {
         if (response.body['status']) {
           _user.firstName = response.body['usre']['first_name'];
           _user.mobile = response.body['usre']['mobile'];
@@ -94,19 +94,29 @@ class UserController extends GetxController {
     }
   }
 
-
-/// this function to save user token in the user phone 
+  /// this function to save user token in the user phone
   Future<bool> saveUserToken(String token) async {
     return false;
   }
 
-
-/// this function to check if the user is logged in on signed up 
+  /// this function to check if the user is logged in on signed up
   bool isThereUser() {
     if (_user.email == "email") {
       return false;
     } else {
       return true;
     }
+  }
+
+  //Show dilog
+  Future<bool> onLogoutOfAccount() async {
+    return Dialogs.statucDialog(
+        "Successful!", "You have successfully loged out!");
+  }Future<bool> onLoginToAccount() async {
+    return Dialogs.statucDialog(
+        "Welcome back", "You have logged in successfully");
+  }Future<bool> onSignUpAccount() async {
+    return Dialogs.statucDialog(
+        "Welcome!", "You have been registered successfully");
   }
 }

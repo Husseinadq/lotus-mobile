@@ -4,6 +4,7 @@ import 'package:lotus/controller/recommended_product_controller.dart';
 import 'package:lotus/controller/user_controller.dart';
 import 'package:lotus/pages/home/Main_shop_page.dart';
 import 'package:get/get.dart';
+import 'package:lotus/pages/search/search_results_screen.dart';
 import 'package:lotus/pages/splash/login/login_screen.dart';
 import 'package:lotus/pages/splash/splash_screen.dart';
 import 'package:lotus/routes/routes_helper.dart';
