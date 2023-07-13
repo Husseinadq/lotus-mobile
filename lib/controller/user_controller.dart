@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lotus/data/repository/user_repo.dart';
 import 'package:lotus/helper/dialogs.dart';
 import 'package:lotus/models/user_model.dart';
 import 'package:lotus/routes/routes_helper.dart';
+import 'package:lotus/utils/colors.dart';
 
 class UserController extends GetxController {
   final UserRepo userRepo;
@@ -112,11 +114,28 @@ class UserController extends GetxController {
   Future<bool> onLogoutOfAccount() async {
     return Dialogs.statucDialog(
         "Successful!", "You have successfully loged out!");
-  }Future<bool> onLoginToAccount() async {
+  }
+
+  Future<bool> onLoginToAccount() async {
     return Dialogs.statucDialog(
         "Welcome back", "You have logged in successfully");
-  }Future<bool> onSignUpAccount() async {
+  }
+
+  Future<bool> onSignUpAccount() async {
     return Dialogs.statucDialog(
         "Welcome!", "You have been registered successfully");
+  }
+
+  Future displayBottomeSheet() {
+    return showModalBottomSheet(
+        context: Get.overlayContext!,
+        backgroundColor: AppColors.primary,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        builder: ((context) => Container(
+              decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(25)),
+              height: 300,
+            )));
   }
 }
