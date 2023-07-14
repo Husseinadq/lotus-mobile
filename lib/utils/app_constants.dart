@@ -32,9 +32,9 @@ class AppConstants {
   //#### end product url route
 
   // #### start category url route
-    static const String SINGLE_CATEGORY_URL = "/get-single-category/";
-    static const String ALL_CATEGORY_URL = "/get-category";
-    //#### end category url route
+  static const String SINGLE_CATEGORY_URL = "/get-single-category/";
+  static const String ALL_CATEGORY_URL = "/get-category";
+  //#### end category url route
 
   //#### start cart url route
   static const String ALL_CART_ITEMS = "/post-cart-items";
@@ -51,6 +51,7 @@ class AppConstants {
 
   /// start google slidable bottum nav
   static int PAGENUMBER = 0;
+  static bool IS_FROM_OUT_ROUT = false;
   static List<Widget> NAV_BAR_SCREEN = [
     HomeScreen(),
     CategoriesScreen(),

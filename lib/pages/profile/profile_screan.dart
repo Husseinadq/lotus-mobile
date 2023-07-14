@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/user_controller.dart';
 import 'package:lotus/routes/routes_helper.dart';
+import 'package:lotus/utils/app_constants.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';
@@ -201,9 +202,21 @@ class ProfileScreen extends StatelessWidget {
               Get.find<UserController>().isThereUser()
                   ? profileItem(Icons.shopping_bag, "My Order")
                   : const SizedBox(),
-              profileItem(Icons.favorite, "My Wish List"),
+              GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getWishlist());
+                  },
+                  child: profileItem(Icons.favorite, "My Wishlist")),
               profileItem(Icons.local_shipping, "Shipping Address"),
-              profileItem(Icons.shopping_cart, "My Cart"),
+              GestureDetector(
+                  onTap: (() {
+                    AppConstants.IS_FROM_OUT_ROUT = true;
+                    AppConstants.PAGENUMBER = 2;
+
+                    Get.offNamed(RouteHelper.getCart());
+                    // Get.toNamed(RouteHelper.getMainPage());
+                  }),
+                  child: profileItem(Icons.shopping_cart, "My Cart")),
               profileItem(Icons.payment, "Payment"),
               SizedBox(
                 height: Dimensions.height10,

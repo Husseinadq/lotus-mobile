@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/cart_controller.dart';
+import 'package:lotus/utils/app_constants.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
+import 'package:lotus/widgets/app_bar/buttom_nav_bar.dart';
 import 'package:lotus/widgets/big_text.dart';
 
 import '../../widgets/app_bar/app_bar.dart';
 import '../product/product_cart_card.dart';
 
 class CartScreen extends StatelessWidget {
- const CartScreen({super.key});
+  const CartScreen({super.key});
   @override
   Widget build(BuildContext context) {
     Get.find<CartController>().getAllCartItems();
@@ -24,7 +26,8 @@ class CartScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppBarWidget(),
-                  Container( height: 50,
+                  Container(
+                    height: 50,
                     margin: EdgeInsets.only(
                       left: Dimensions.width10,
                       bottom: Dimensions.height20,
@@ -43,7 +46,8 @@ class CartScreen extends StatelessWidget {
                         builder: ((cartController) => cartController.isLoaded
                             ? ListView.builder(
                                 itemCount: cartController.cartItems.length,
-                                itemBuilder: (context, index) => ProductCartCard(
+                                itemBuilder: (context, index) =>
+                                    ProductCartCard(
                                       item: cartController.cartItems[index],
                                     ))
                             : Center(
@@ -80,7 +84,7 @@ class CartScreen extends StatelessWidget {
           ],
         ),
       ),
-      // bottomNavigationBar: NavigationBarWidget(index: 4 ,),
+      //  bottomNavigationBar:AppConstants.IS_FROM_OUT_ROUT? BottomNavBar():SizedBox(height: 0,),
     );
   }
 }

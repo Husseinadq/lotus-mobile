@@ -7,7 +7,9 @@ import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';
 
+import '../../utils/app_constants.dart';
 import '../../widgets/app_bar/app_bar.dart';
+import '../../widgets/app_bar/buttom_nav_bar.dart';
 import '../product/product_cart_card.dart';
 
 class WishlistScreen extends StatelessWidget {
@@ -23,7 +25,8 @@ class WishlistScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppBarWidget(),
-            Container(height: Dimensions.height50,
+            Container(
+              height: Dimensions.height50,
               margin: EdgeInsets.only(
                 left: Dimensions.width10,
                 bottom: Dimensions.height20,
@@ -39,14 +42,11 @@ class WishlistScreen extends StatelessWidget {
             ),
             Expanded(
               child: GetBuilder<WishlistController>(
-                  builder: ((wishlistController) => wishlistController
-                          .isLoaded
+                  builder: ((wishlistController) => wishlistController.isLoaded
                       ? ListView.builder(
-                          itemCount:
-                              wishlistController.wishlistItems.length,
+                          itemCount: wishlistController.wishlistItems.length,
                           itemBuilder: (context, index) => WishListCard(
-                                item:
-                                    wishlistController.wishlistItems[index],
+                                item: wishlistController.wishlistItems[index],
                               ))
                       : Center(
                           child: CircularProgressIndicator(
@@ -59,6 +59,11 @@ class WishlistScreen extends StatelessWidget {
           ],
         ),
       ),
+      // bottomNavigationBar: AppConstants.IS_FROM_OUT_ROUT
+      //     ? BottomNavBar()
+      //     : SizedBox(
+      //         height: 0,
+      //       ),
     );
   }
 }

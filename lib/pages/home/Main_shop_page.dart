@@ -40,7 +40,7 @@ class _MainShopPageState extends State<MainShopPage> {
               AppConstants.PAGENUMBER = index;
             });
 
-            Get.parameters['pageNumber'] = index.toString();
+            // Get.parameters['pageNumber'] = index.toString();
           },
           index: AppConstants.PAGENUMBER,
           items: [
