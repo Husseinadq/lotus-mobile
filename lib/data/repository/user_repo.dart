@@ -35,10 +35,29 @@ class UserRepo {
             AppConstants.LANG,
         data); //we bass as url the end point
   }
+
   Future<Response> getProfile(Map<String, dynamic> data) async {
     return await apiClient.postData(
         AppConstants.API_V +
             AppConstants.USER_PROFILE +
+            AppConstants.KEY +
+            AppConstants.LANG,
+        data); //we bass as url the end point
+  }
+
+  Future<Response> getStates() async {
+    return await apiClient.getData(
+      AppConstants.API_V +
+          AppConstants.GET_STATES +
+          AppConstants.KEY +
+          AppConstants.LANG,
+    ); //we bass as url the end point
+  }
+
+  Future<Response> setStateAddress(Map<String, dynamic> data) async {
+    return await apiClient.postData(
+        AppConstants.API_V +
+            AppConstants.SET_USER_STATE +
             AppConstants.KEY +
             AppConstants.LANG,
         data); //we bass as url the end point

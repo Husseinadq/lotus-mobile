@@ -13,8 +13,11 @@ class CategoryController extends GetxController {
   List<Category> _singleCategoryList = [];
   List<Category> get singleCategoryList => _singleCategoryList;
 
-  List<Category> _allCategoriesList = [];
-  List<Category> get allCategoriesList => _allCategoriesList;
+  List<Category> _categories = [];
+  List<Category> get allCategoriesList => _categories;
+
+  List<Category> _subCategories = [];
+  List<Category> get subCategories => _subCategories;
 
   Future<void> getSingleCategory(int id) async {
     Response response = await categoryRepo.getSingleCategory(id);
@@ -22,15 +25,30 @@ class CategoryController extends GetxController {
       _singleCategoryList = [];
       _singleCategoryList.addAll(Categories.fromJson(response.body).categories);
       update();
+    } else {
+      //TODO handel error
     }
   }
 
   Future<void> getAllCategories() async {
     Response response = await categoryRepo.getAllCategories();
     if (response.statusCode == 200) {
-      _allCategoriesList = [];
-      _allCategoriesList.addAll(Categories.fromJson(response.body).categories);
+      _categories = [];
+      _categories.addAll(Categories.fromJson(response.body).categories);
       update();
+    } else {
+      //TODO handel error
+    }
+  }
+
+  Future<void> getSubCategories(int parintId) async {
+    Response response = await categoryRepo.getSubCategories({"parint_id":parintId});
+    if (response.statusCode == 200) {
+      _subCategories = [];
+      _subCategories.addAll(Categories.fromJson(response.body).categories);
+      update();
+    } else {
+      //TODO handel error
     }
   }
 }

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import '../../controller/category_controller.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
@@ -15,7 +14,6 @@ class MainSideCategory extends StatefulWidget {
 }
 
 class _MainSideCategoryState extends State<MainSideCategory> {
- 
   int selected = 0;
 
   @override
@@ -32,9 +30,11 @@ class _MainSideCategoryState extends State<MainSideCategory> {
                   itemCount: categoryController.allCategoriesList.length,
                   itemBuilder: (context, index) => GestureDetector(
                         onTap: () {
-                          setState(() {
+                          setState(() async {
                             selected = index;
-                            print(selected);
+                            await categoryController.getSubCategories(
+                                categoryController
+                                    .allCategoriesList[index].id!);
                           });
                         },
                         child: MainCategoriesCard(
@@ -50,7 +50,7 @@ class _MainSideCategoryState extends State<MainSideCategory> {
                 builder: (categoryController) =>
                     ListView(scrollDirection: Axis.vertical, children: [
                   ExpansionTileCard(
-                    items: categoryController.allCategoriesList,
+                    items: categoryController.subCategories,
                     title: categoryController.allCategoriesList[selected].name!,
                   ),
                   ExpansionTileCard(
@@ -122,19 +122,21 @@ class ExpansionTileCard extends StatelessWidget {
             itemCount: items.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3, crossAxisSpacing: 2, mainAxisSpacing: 2),
-            itemBuilder: (context, index) => subCategoriesCard(
-                items[index].name!,  "assets/images/2.png"),
+            itemBuilder: (context, index) =>
+                subCategoriesCard(items[index].name!, "assets/images/2.png"),
           ),
         ),
       ],
     );
   }
-  Widget subCategoriesCard(String title,String image){
-    return  Card(
+
+  Widget subCategoriesCard(String title, String image) {
+    return Card(
       elevation: 1,
       child: Container(
         decoration: BoxDecoration(
-            color: AppColors.primary, borderRadius: BorderRadius.circular(Dimensions.radius20)),
+            color: AppColors.primary,
+            borderRadius: BorderRadius.circular(Dimensions.radius20)),
         child: Column(
           children: [
             Expanded(
@@ -164,6 +166,5 @@ class ExpansionTileCard extends StatelessWidget {
         ),
       ),
     );
-  
   }
 }

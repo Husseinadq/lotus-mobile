@@ -24,6 +24,9 @@ class AppConstants {
   static const String USER_LOG_OUT = "/user/logout";
   static const String USER_PROFILE = "/user/profile";
 
+  static const String GET_STATES = "/user/get-states";
+  static const String SET_USER_STATE = "/user/set-state";
+
   //#### end user url route
 
   //#### start product url route
@@ -33,7 +36,8 @@ class AppConstants {
 
   // #### start category url route
   static const String SINGLE_CATEGORY_URL = "/get-single-category/";
-  static const String ALL_CATEGORY_URL = "/get-category";
+  static const String ALL_CATEGORY_URL = "/get-main-category";
+  static const String ALL_SUB_CATEGORIES_URL = "/get-sub-categories";
   //#### end category url route
 
   //#### start cart url route

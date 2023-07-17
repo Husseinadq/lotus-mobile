@@ -198,7 +198,9 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(
                 height: Dimensions.height10,
               ),
-              profileItem(Icons.person, "Personal Details"),
+              GestureDetector(
+                  onTap: () => Get.find<UserController>().showPersonalData(),
+                  child: profileItem(Icons.person, "Personal Details")),
               Get.find<UserController>().isThereUser()
                   ? profileItem(Icons.shopping_bag, "My Order")
                   : const SizedBox(),
@@ -247,9 +249,15 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: Dimensions.height10,
                 ),
-                profileItem(Icons.settings, "Settings"),
+                GestureDetector(
+                    onTap: (() =>
+                        Get.find<UserController>().onStateSelectSettings()),
+                    child: profileItem(Icons.maps_home_work_rounded, "State")),
+                GestureDetector(
+                    onTap: (() =>
+                        Get.find<UserController>().onLanguageSelectSettings()),
+                    child: profileItem(Icons.language, "Language")),
                 profileItem(Icons.shield, "Privacy Policy"),
-                profileItem(Icons.language, "Language"),
                 profileItem(Icons.notifications, "Notifications"),
                 profileItem(Icons.help, "Help"),
                 Get.find<UserController>().isThereUser()

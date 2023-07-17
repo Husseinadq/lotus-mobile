@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lotus/data/repository/user_repo.dart';
+import 'package:lotus/helper/bottom_sheet.dart';
 import 'package:lotus/helper/dialogs.dart';
+import 'package:lotus/models/simple_model.dart';
 import 'package:lotus/models/user_model.dart';
 import 'package:lotus/routes/routes_helper.dart';
 import 'package:lotus/utils/colors.dart';
@@ -20,9 +22,15 @@ class UserController extends GetxController {
       email: "email",
       token: "token");
   bool _isConfirm = false;
+  List<SimpleModel>? _states;
+  List<SimpleModel>? _languages = [
+    SimpleModel(id: 0, name: 'English'),
+    SimpleModel(id: 1, name: 'عربي'),
+  ];
 
   User get getUser => _user;
   bool get isConfirm => _isConfirm;
+  List<SimpleModel> get states => _states!;
 
   Future<bool> login(String emailOrmobile, String password) async {
     try {
@@ -110,6 +118,10 @@ class UserController extends GetxController {
     }
   }
 
+  Future<void> showPersonalData() async {
+    // Dialogs.profileDialog(_user);
+  }
+
   //Show dilog
   Future<bool> onLogoutOfAccount() async {
     return Dialogs.statucDialog(
@@ -126,6 +138,7 @@ class UserController extends GetxController {
         "Welcome!", "You have been registered successfully");
   }
 
+//Bottome Sheet
   Future displayBottomeSheet() {
     return showModalBottomSheet(
         context: Get.overlayContext!,
@@ -137,5 +150,48 @@ class UserController extends GetxController {
                   borderRadius: BorderRadius.circular(25)),
               height: 300,
             )));
+  }
+
+  Future<bool> onStateSelectSettings() async {
+    try {
+      Response response = await userRepo.getStates();
+      print("select state " + response.body.toString());
+      if (response.statusCode == 200) {
+        _states = [];
+        _states?.addAll(SimpleModelRespons.fromJson(response.body).items);
+        await BottomSheets.settingBottomeSheet('Select State', states);
+        update();
+      }
+      return true;
+    } catch (e) {
+      //TODO HENDEL ERROR
+    }
+    return false;
+  }
+
+  Future<bool> setSettingState(int id) async {
+    try {
+      Response response = await userRepo.setStateAddress({'stateId': id});
+      if (response.statusCode == 200) {
+        if (response.body['status']) {
+          update();
+          return true;
+        }
+
+        update();
+        return false;
+      }
+      //TODO post state to db
+      return true;
+    } catch (e) {
+      //TODO post handel to db
+
+    }
+    return false;
+  }
+
+  Future<bool> onLanguageSelectSettings() async {
+    await BottomSheets.settingBottomeSheet('Select Language', _languages!);
+    return true;
   }
 }
