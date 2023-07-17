@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:lotus/pages/cart/cart_screen.dart';
 import 'package:lotus/pages/home/Main_shop_page.dart';
 import 'package:lotus/pages/home/home_screen.dart';
+import 'package:lotus/pages/home/sub_home_screen.dart';
+import 'package:lotus/pages/profile/personal_details_screen.dart';
 import 'package:lotus/pages/splash/login/login_screen.dart';
 import 'package:lotus/pages/profile/profile_screan.dart';
 import 'package:lotus/pages/splash/splash_screen.dart';
@@ -23,6 +25,8 @@ class RouteHelper {
   static const String wishlist = "/wishlist";
   static const String profile = "/profile";
 
+  static const String subHome = "/sub-home";
+  static const String personalDetail = "/personal-Detail";
   static const String offers = "/offers";
 
   static const String productDetail = "/product-detail";
@@ -38,6 +42,8 @@ class RouteHelper {
   static String getProfile() => '$profile';
   static String getWishlist() => '$wishlist';
 
+  static String getSubHome() => '$subHome';
+  static String getPersonalDetail() => '$personalDetail';
   static String getOffers() => '$offers';
 
   static String getProductDetail(int productId) =>
@@ -86,6 +92,8 @@ class RouteHelper {
           var index = Get.parameters['index'];
           return ProfileScreen();
         }),
+    GetPage(name: getSubHome(), page: () => SubHomeScreen()),
+    GetPage(name: getPersonalDetail(), page: () => PersonalDetailsScreen()),
     GetPage(
         name: productDetail,
         page: () {

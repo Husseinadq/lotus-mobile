@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lotus/controller/category_controller.dart';
+import 'package:lotus/pages/home/sub_home_screen.dart';
+import 'package:lotus/routes/routes_helper.dart';
 import 'package:lotus/utils/colors.dart';
 import 'package:lotus/utils/dimensions.dart';
 import 'package:lotus/widgets/big_text.dart';
@@ -62,36 +64,39 @@ class _CategoryListViewState extends State<CategoryListView> {
                     itemCount: 20,
                     // categoriesController.allCategoriesList.length,
                     itemBuilder: ((context, index) {
-                      return Container(
-                        margin: EdgeInsets.only(bottom: 1, top: 0),
-                        height: Dimensions.height90,
-                        // width: Dimensions.height5,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: CircleAvatar(
-                                radius: Dimensions.radius35,
-                                backgroundColor: AppColors.grey,
-                                child: Image.asset('assets/images/2.png'),
+                      return GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: 1, top: 0),
+                          height: Dimensions.height90,
+                          // width: Dimensions.height5,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: CircleAvatar(
+                                  radius: Dimensions.radius35,
+                                  backgroundColor: AppColors.grey,
+                                  child: Image.asset('assets/images/2.png'),
+                                ),
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(top: 5),
-                              child: Text(
-                                "Test",
-                                // categoriesController
-                                //     .allCategoriesList[index].name!,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: AppColors.secondry,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 13),
-                              ),
-                            )
-                          ],
+                              Container(
+                                margin: EdgeInsets.only(top: 5),
+                                child: Text(
+                                  "Test",
+                                  // categoriesController
+                                  //     .allCategoriesList[index].name!,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: AppColors.secondry,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 13),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       );
                     })),

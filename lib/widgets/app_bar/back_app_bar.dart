@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
@@ -26,7 +27,9 @@ class BackAppBar extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 10, right: 10),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.back();
+                      },
                       icon: Icon(
                         Icons.arrow_back,
                         size: 30,

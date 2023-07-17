@@ -5,6 +5,7 @@ import 'package:lotus/utils/dimensions.dart';
 
 import '../../controller/product_controller.dart';
 import '../../widgets/app_bar/back_app_bar.dart';
+import '../../widgets/app_bar/buttom_nav_bar.dart';
 import '../../widgets/carousel_images.dart';
 import '../../widgets/category_list_view.dart';
 import '../../widgets/section.dart';
@@ -54,6 +55,7 @@ class SubHomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      // bottomNavigationBar: BottomNavBar(),
     );
   }
 }

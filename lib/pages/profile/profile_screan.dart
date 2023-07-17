@@ -206,16 +206,13 @@ class ProfileScreen extends StatelessWidget {
                   : const SizedBox(),
               GestureDetector(
                   onTap: () {
-                    Get.toNamed(RouteHelper.getWishlist());
+                    AppConstants.navigationKey.currentState!.setPage(3);
                   },
                   child: profileItem(Icons.favorite, "My Wishlist")),
               profileItem(Icons.local_shipping, "Shipping Address"),
               GestureDetector(
                   onTap: (() {
-                    AppConstants.IS_FROM_OUT_ROUT = true;
-                    AppConstants.PAGENUMBER = 2;
-
-                    Get.offNamed(RouteHelper.getCart());
+                    AppConstants.navigationKey.currentState!.setPage(2);
                     // Get.toNamed(RouteHelper.getMainPage());
                   }),
                   child: profileItem(Icons.shopping_cart, "My Cart")),

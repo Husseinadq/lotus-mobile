@@ -34,6 +34,7 @@ class _MainShopPageState extends State<MainShopPage> {
           child: AppConstants.NAV_BAR_SCREEN[AppConstants.PAGENUMBER],
         ),
         bottomNavigationBar: CurvedNavigationBar(
+          key: AppConstants.navigationKey,
           height: Dimensions.height50,
           onTap: (index) {
             setState(() {
@@ -76,25 +77,29 @@ class _MainShopPageState extends State<MainShopPage> {
                     : Positioned(right: 0, top: 0, child: Text("")),
               ],
             ),
-            Stack(
-              children: [Icon(
+            Stack(children: [
+              Icon(
                 Icons.favorite,
                 size: 30,
                 color: AppColors.primary,
-              ),Get.find<WishlistController>().wishlistItems.length > 0
-                    ? Positioned(
-                        right: 10,
-                        top: 6,
-                        child: Center(
-                            child: Text(
-                          Get.find<WishlistController>().wishlistItems.length.toString(),
-                          style: TextStyle(
-                              color: AppColors.secondry,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        )))
-                    : Positioned(right: 0, top: 0, child: Text("")),]
-            ),
+              ),
+              Get.find<WishlistController>().wishlistItems.length > 0
+                  ? Positioned(
+                      right: 10,
+                      top: 6,
+                      child: Center(
+                          child: Text(
+                        Get.find<WishlistController>()
+                            .wishlistItems
+                            .length
+                            .toString(),
+                        style: TextStyle(
+                            color: AppColors.secondry,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
+                      )))
+                  : Positioned(right: 0, top: 0, child: Text("")),
+            ]),
             Icon(
               Icons.person,
               size: 30,

@@ -26,6 +26,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
+      key: AppConstants.navigationKey,
       height: Dimensions.height50,
       onTap: (index) {
         setState(() {
@@ -58,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           // }
         });
 
-        Get.parameters['pageNumber'] = index.toString();
+        // Get.parameters['pageNumber'] = index.toString();
       },
       index: AppConstants.PAGENUMBER,
       items: [

@@ -104,6 +104,10 @@ class UserController extends GetxController {
     }
   }
 
+  Future<bool> editPersonalData(String firstName,String lastName) async {
+    return false;
+  }
+
   /// this function to save user token in the user phone
   Future<bool> saveUserToken(String token) async {
     return false;

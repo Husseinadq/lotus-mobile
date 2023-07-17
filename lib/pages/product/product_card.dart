@@ -32,7 +32,6 @@ class ProductCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(Dimensions.radius15)),
         child: Column(children: [
           Stack(children: [
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -66,7 +65,7 @@ class ProductCard extends StatelessWidget {
                     right: Dimensions.width5,
                     top: Dimensions.height30),
                 decoration: BoxDecoration(
-                  color: AppColors.lightgrey,
+                    color: AppColors.lightgrey,
                     image: DecorationImage(
                         fit: BoxFit.fill,
                         image: NetworkImage(product.productImage!))),
@@ -136,9 +135,10 @@ class ProductCard extends StatelessWidget {
                 //   ],
                 // ),
                 GestureDetector(
+                  behavior: HitTestBehavior.translucent,
                   onTap: () {
                     Get.find<CartController>().addToCart(1, 1, product.id);
-                    print("tap on add to cart "+product.id.toString());
+                    print("tap on add to cart " + product.id.toString());
                   },
                   child: AddToCartButton(
                       width: Dimensions.width120, height: Dimensions.height50),

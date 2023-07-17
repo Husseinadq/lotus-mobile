@@ -1,4 +1,6 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:lotus/pages/home/sub_home_screen.dart';
 import 'package:lotus/pages/wishlist/wishlist_screen.dart';
 
 import '../pages/cart/cart_screen.dart';
@@ -62,8 +64,9 @@ class AppConstants {
     CartScreen(),
     WishlistScreen(),
     ProfileScreen(),
+    SubHomeScreen()
   ];
 
   /// end  google slidable bottum nav
-
+  static final navigationKey = GlobalKey<CurvedNavigationBarState>();
 }
